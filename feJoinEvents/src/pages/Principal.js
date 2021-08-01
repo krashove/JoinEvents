@@ -1,15 +1,15 @@
-import React from 'react';
-import Navbar from '../components/navbar.js';
+import React from "react";
+import Navibar from "../components/navibar.js";
 
 class Principal extends React.Component {
-    render(){
-        return(
-            <React.Fragment>
-                <div>
-                    <Navbar />
-                </div>
-            </React.Fragment>
-        );
-    }
+  render() {
+    return (
+      <React.Fragment>
+        <div>
+          <Navibar />
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 export default Principal;
