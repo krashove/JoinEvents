@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
-import Banner from '../components/images/background/5.jpg';
+import Banner from '../components/images/background/1.jpg';
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {useremil: 'Emai Address*',
@@ -52,10 +52,10 @@ class Login extends React.Component {
           <React.Fragment>
             <section className="page-title" style={{backgroundImage: `url(${Banner})`}}>
               <div className="auto-container">
-                  <h1>login</h1>
+                  <h1>registrate</h1>
                   <ul className="bread-crumb clearfix">
                       <li><Link to="/">Home</Link></li>
-                      <li>login</li>
+                      <li>registrate</li>
                   </ul>
               </div>
             </section>
@@ -64,7 +64,7 @@ class Login extends React.Component {
               <div className="auto-container">
                 <div className="form-box">
                   <div className="box-inner">
-                    <h1>Login Now</h1>
+                    <h1>Welcome to JoinEvents</h1>
                     <div className="styled-form login-form">
                       <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
@@ -84,7 +84,7 @@ class Login extends React.Component {
                         <div className="clearfix">
                           <div className="form-group pull-left">
                             <button onClick={this.iniciarSession} type="button" className="theme-btn btn-style-two">
-                              <span className="btn-title">Login Now</span>
+                              <span className="btn-title">Register</span>
                             </button>
                           </div>
                         </div>
@@ -111,4 +111,4 @@ class Login extends React.Component {
       );
   }
 }
-export default Login;
+export default Register;

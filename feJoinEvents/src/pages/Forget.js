@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 
 import Banner from '../components/images/background/5.jpg';
 
-class Login extends React.Component {
+class Forget extends React.Component {
   constructor(props) {
     super(props);
     this.state = {useremil: 'Emai Address*',
@@ -39,11 +38,6 @@ class Login extends React.Component {
     let user = await fetch( url_web, requestOptions)
     let data = await user.json();
 
-    let cookies = new Cookies();
-    cookies.set('token', data.usuario.token,{path: "/"})
-    cookies.set('name', data.usuario.name,{path: "/"})
-    cookies.set('tipoUser', data.usuario.tipoUser,{path: "/"})
-
     window.location.href="./"
   };
 
@@ -52,10 +46,10 @@ class Login extends React.Component {
           <React.Fragment>
             <section className="page-title" style={{backgroundImage: `url(${Banner})`}}>
               <div className="auto-container">
-                  <h1>login</h1>
+                  <h1>Recuperar contraseña</h1>
                   <ul className="bread-crumb clearfix">
                       <li><Link to="/">Home</Link></li>
-                      <li>login</li>
+                      <li>Recuperar</li>
                   </ul>
               </div>
             </section>
@@ -64,7 +58,7 @@ class Login extends React.Component {
               <div className="auto-container">
                 <div className="form-box">
                   <div className="box-inner">
-                    <h1>Login Now</h1>
+                    <h1>Reset Password</h1>
                     <div className="styled-form login-form">
                       <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
@@ -84,7 +78,7 @@ class Login extends React.Component {
                         <div className="clearfix">
                           <div className="form-group pull-left">
                             <button onClick={this.iniciarSession} type="button" className="theme-btn btn-style-two">
-                              <span className="btn-title">Login Now</span>
+                              <span className="btn-title">Reset</span>
                             </button>
                           </div>
                         </div>
@@ -111,4 +105,4 @@ class Login extends React.Component {
       );
   }
 }
-export default Login;
+export default Forget;
