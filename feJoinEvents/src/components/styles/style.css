@@ -764,6 +764,19 @@ img {
   float: right;
 }
 
+.social-divider{
+  width: 80%;
+  text-align: center;
+  border-bottom: 1px solid #222222;
+  line-height: 0.1em;
+  margin: 20px 0 20px;
+  margin-left: 10%;
+}
+
+.social-divider span{
+  background: #FAFAFA;
+  padding: 0 10px;
+}
 /*** 
 
 ====================================================================

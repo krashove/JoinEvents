@@ -91,6 +91,19 @@ class Login extends React.Component {
                             <input type="checkbox" id="remember-me"/>
                             <label className="remember-me" htmlFor ="remember-me">&nbsp; Remember Me</label>
                           </div>
+                        </div>
+                        <div className="social-divider">
+                          <div className="center-divider">
+                            <span>or</span>
+                          </div>
+                        </div>
+                        <div className="clearfix">
+                          <div className="form-group social-icon-one pull-left">
+                            <label className="remember-me">¿Desea Registrarse?</label>
+                          </div>
+                          <div className="form-group social-icon-one pull-right">
+                            <label className="remember-me">¿Se olvido su contraseña?</label>
+                          </div>
                         </div>          
                       </form>
                     </div>
