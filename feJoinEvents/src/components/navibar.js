@@ -41,7 +41,7 @@ function Navibar() {
           <MeetingRoomIcon className={classes.icon} />
           <Nav>
             <Typography variant="h6" color="inherit" noWrap>
-              Home
+              Home &nbsp;&nbsp;
             </Typography>
           </Nav>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
