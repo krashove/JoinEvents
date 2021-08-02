@@ -7,14 +7,11 @@ import Banner from '../components/images/background/5.jpg';
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {useremil: 'Emai Address*',
-    userpassword: 'Enter Password'};
+    this.state = {useremil: 'Email*',
+    userpassword: 'Password'};
 
     this.handleChange = this.handleChange.bind(this);
   }
-  handleClick = e => {
-    console.log('Button was clicked');
-  };
 
   handleChange(event) {
     let nam = event.target.name;
@@ -95,7 +92,7 @@ class Login extends React.Component {
                         </div>
                         <div className="clearfix">
                           <div className="form-group social-icon-one pull-left">
-                            <label className="remember-me"><Link to="./register">¿Desea Registrarse?</Link></label>
+                            <label className="remember-me"><Link to="./register">¿Deseas Registrate?</Link></label>
                           </div>
                           <div className="form-group social-icon-one pull-right">
                             <Link to="./forget" className="remember-me">¿Se olvido su contraseña?</Link>

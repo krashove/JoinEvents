@@ -10,14 +10,26 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import AppBar from "@material-ui/core/AppBar";
 
-class Navibar extends React.Component {
-  state = {};
+import { makeStyles } from "@material-ui/core/styles";
+import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import PersonIcon from "@material-ui/icons/Person";
 
-  render() {
-    return (
-      <Navbar collapseOnSelect expand="lg" bg="lg">
-        <Container>
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    marginRight: theme.spacing(2),
+  },
+}));
+
+function Navibar() {
+  const classes = useStyles();
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="lg">
+      <AppBar position="relative">
+        <Toolbar>
           <Navbar.Brand href="/">
             <img
               className="navibar-logo"
@@ -25,42 +37,55 @@ class Navibar extends React.Component {
               alt=""
             />
           </Navbar.Brand>
+          <MeetingRoomIcon className={classes.icon} />
+          <Nav>
+            <Typography variant="h6" color="inherit" noWrap>
+              Home &nbsp;&nbsp;
+            </Typography>
+          </Nav>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Form className="d-flex">
-                <FormControl
-                  type="search"
-                  placeholder="Buscar Evento / Categoria"
-                  className="mr-2"
-                  aria-label="Buscar"
-                />
-                <Button className="theme-btn btn-style-one">
-                  <span className="btn-title">Buscar</span>&nbsp;&nbsp;&nbsp;
-                </Button>
-              </Form>
-            </Nav>
-            <Nav>
-              <Dropdown>
-                <Dropdown.Toggle
-                  id="dropdown-button-dark-example1"
-                  variant="secondary"
-                >
-                  Usuario &nbsp;▾
-                </Dropdown.Toggle>
+          <Container>
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto">
+                <Form className="d-flex">
+                  <FormControl
+                    type="search"
+                    placeholder="Buscar Evento / Categoria"
+                    className="mr-2"
+                    aria-label="Buscar"
+                  />
+                  <Button className="theme-btn btn-style-one">
+                    <span className="btn-title">Buscar</span>
+                    &nbsp;&nbsp;&nbsp;
+                  </Button>
+                </Form>
+              </Nav>
 
-                <Dropdown.Menu variant="dark">
-                  <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item href="#/action-2">Cerrar Sesión</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    );
-  }
+              <Nav>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-button-dark-example1"
+                    variant="secondary"
+                  >
+                    <PersonIcon className={classes.icon} />
+                    Usuario &nbsp;▾
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu variant="dark">
+                    <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item href="#/action-2">
+                      Cerrar Sesión
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Toolbar>
+      </AppBar>
+    </Navbar>
+  );
 }
 
 // {/* <div className="auto-container clearfix">

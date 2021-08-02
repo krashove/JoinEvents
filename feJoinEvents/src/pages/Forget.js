@@ -41,6 +41,10 @@ class Forget extends React.Component {
     window.location.href="./"
   };
 
+  regresaLogin = async () => {
+    window.location.href="./login"
+  };
+
   render(){
       return(
           <React.Fragment>
@@ -68,33 +72,18 @@ class Forget extends React.Component {
                                   name="useremil"  
                                   value={this.state.useremil} />
                         </div>
-                        <div className="form-group">
-                          <span className="adon-icon"><span className="fa fa-unlock"></span></span>
-                          <input onChange={this.handleChange} 
-                                  type="password" 
-                                  name="userpassword" 
-                                  value={this.state.userpassword}/>
-                        </div>
                         <div className="clearfix">
                           <div className="form-group pull-left">
                             <button onClick={this.iniciarSession} type="button" className="theme-btn btn-style-two">
                               <span className="btn-title">Reset</span>
                             </button>
                           </div>
-                        </div>
-                        <div className="social-divider">
-                          <div className="center-divider">
-                            <span>or</span>
+                          <div className="form-group pull-right">
+                            <button onClick={this.regresaLogin} type="button" className="theme-btn btn-style-two">
+                              <span className="btn-title">Cancelar</span>
+                            </button>
                           </div>
-                        </div>
-                        <div className="clearfix">
-                          <div className="form-group social-icon-one pull-left">
-                            <label className="remember-me"><Link to="./register">¿Desea Registrarse?</Link></label>
-                          </div>
-                          <div className="form-group social-icon-one pull-right">
-                            <Link to="./forget" className="remember-me">¿Se olvido su contraseña?</Link>
-                          </div>
-                        </div>          
+                        </div>      
                       </form>
                     </div>
                   </div>

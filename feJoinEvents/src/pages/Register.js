@@ -7,14 +7,13 @@ import Banner from '../components/images/background/1.jpg';
 class Register extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {useremil: 'Emai Address*',
-    userpassword: 'Enter Password'};
+    this.state = {username: 'Nombre*',
+    userlastname: 'Apellidos*',
+    useremil: 'Email*',
+    userpassword: 'Contraseña*'};
 
     this.handleChange = this.handleChange.bind(this);
   }
-  handleClick = e => {
-    console.log('Button was clicked');
-  };
 
   handleChange(event) {
     let nam = event.target.name;
@@ -28,23 +27,24 @@ class Register extends React.Component {
     console.log(this.state);
   };
 
-  iniciarSession = async () =>{
-    let url_web = process.env.REACT_APP_URL_WEBSERVICE + '/users/login'
+  crearUser = async () =>{
+    let url_web = process.env.REACT_APP_URL_WEBSERVICE + '/users/createuser'
     let requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ user: { email: this.state.useremil, password: this.state.userpassword } })
+      body: JSON.stringify({ nombre: this.state.username,
+      apellido: this.state.userlastname,
+      email: this.state.useremil,
+      password: this.state.userpassword })
     }
 
     let user = await fetch( url_web, requestOptions)
     let data = await user.json();
 
     let cookies = new Cookies();
-    cookies.set('token', data.usuario.token,{path: "/"})
-    cookies.set('name', data.usuario.name,{path: "/"})
-    cookies.set('tipoUser', data.usuario.tipoUser,{path: "/"})
+    cookies.set('name', data.newUser.name,{path: "/"})
 
-    window.location.href="./"
+    window.location.href="./" 
   };
 
   render(){
@@ -67,6 +67,22 @@ class Register extends React.Component {
                     <h1>Welcome to JoinEvents</h1>
                     <div className="styled-form login-form">
                       <form onSubmit={this.handleSubmit}>
+                        <div className="clearfix">
+                          <div className="form-group pull-left">
+                            <span className="adon-icon"><span className="fa fa-user"></span></span>
+                            <input onChange={this.handleChange} 
+                                  type="text" 
+                                  name="username"  
+                                  value={this.state.username} />
+                          </div>
+                          <div className="form-group pull-right">
+                            <span className="adon-icon"><span className="fa fa-user"></span></span>
+                            <input onChange={this.handleChange} 
+                                  type="text" 
+                                  name="userlastname"  
+                                  value={this.state.userlastname} />
+                          </div>
+                        </div>
                         <div className="form-group">
                           <span className="adon-icon"><span className="fa fa-envelope"></span></span>
                           <input onChange={this.handleChange} 
@@ -82,8 +98,13 @@ class Register extends React.Component {
                                   value={this.state.userpassword}/>
                         </div>
                         <div className="clearfix">
-                          <div className="form-group pull-left">
-                            <button onClick={this.iniciarSession} type="button" className="theme-btn btn-style-two">
+                          <div className="pull-left">
+                              <input type="checkbox" id="remember-me"/><label className="remember-me" for="remember-me">&nbsp; Acepta terminos y condiciones</label>
+                          </div>
+                        </div>
+                        <div className="clearfix">
+                          <div className="form-group social-icon-one pull-left">
+                            <button onClick={this.crearUser} type="button" className="theme-btn btn-style-two">
                               <span className="btn-title">Register</span>
                             </button>
                           </div>
@@ -95,7 +116,7 @@ class Register extends React.Component {
                         </div>
                         <div className="clearfix">
                           <div className="form-group social-icon-one pull-left">
-                            <label className="remember-me"><Link to="./register">¿Desea Registrarse?</Link></label>
+                            <label className="remember-me"><Link to="./login">¿Ya tienes una cuentas? Ingresa</Link></label>
                           </div>
                           <div className="form-group social-icon-one pull-right">
                             <Link to="./forget" className="remember-me">¿Se olvido su contraseña?</Link>
