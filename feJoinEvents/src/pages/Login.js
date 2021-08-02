@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import cookies from 'universal-cookie';
+import Cookies from 'universal-cookie';
 
 import Banner from '../components/images/background/5.jpg';
 
@@ -29,23 +29,22 @@ class Login extends React.Component {
   };
 
   iniciarSession = async () =>{
+    let url_web = process.env.REACT_APP_URL_WEBSERVICE + '/users/login'
     let requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json',
-                  'Access-Control-Allow-Origin': '*' },
-      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user: { email: this.state.useremil, password: this.state.userpassword } })
     }
-    console.log(requestOptions)
-    let user = await fetch('http://localhost:3200/users/login', requestOptions)
-    console.log(user)
-    /*let data = user.json();
 
-    cookies.set('token', data.user.token,{path: "/"})
-    cookies.set('name', data.user.name,{path: "/"})
-    cookies.set('tipoUser', data.user.tipoUser,{path: "/"})
+    let user = await fetch( url_web, requestOptions)
+    let data = await user.json();
 
-    window.location.href="./"*/
+    let cookies = new Cookies();
+    cookies.set('token', data.usuario.token,{path: "/"})
+    cookies.set('name', data.usuario.name,{path: "/"})
+    cookies.set('tipoUser', data.usuario.tipoUser,{path: "/"})
+
+    window.location.href="./"
   };
 
   render(){

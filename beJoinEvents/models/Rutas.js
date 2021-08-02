@@ -23,7 +23,7 @@ rutaSchema.statics.findByIdu = async function(id){
 }
 
 rutaSchema.statics.findTypeUser = async function(tipo){
-    return await this.findOne( { tipoUser: tipo }).exec()
+    return await this.find( { tipoUser: tipo }).exec()
 }
 
 module.exports = mongoose.model('Ruta', rutaSchema);

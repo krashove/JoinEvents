@@ -114,9 +114,21 @@ router.post('/deleteUser', async function(req, res, next){
   }
 });
 
+router.post('/createRutas', async function(req, res, next){
+  try{
+    var rutas = new Rutas(req.body.ruta)
+    rutas.save()
+
+    return res.status(200).json({rutas, 
+      error:''})
+  }catch(error){
+    return res.status(400).json({error})
+  }
+});
+
 router.post('/getRutas', async function(req, res, next){
   try{
-    var rutas = await rutas.findTypeUser(req.body.user.tipoUser)
+    var rutas = await Rutas.findTypeUser(req.body.user.tipoUser)
 
     return res.status(200).json({rutas, 
       error:''})
