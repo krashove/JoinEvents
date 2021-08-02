@@ -100,11 +100,6 @@ export default function Album() {
                     Buscar
                   </Button>
                 </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Prueba
-                  </Button>
-                </Grid>
               </Grid>
             </div>
           </Container>
@@ -149,7 +144,6 @@ export default function Album() {
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
           Esperamos la pagina sea de tu gusto!
         </Typography>
-        <Copyright />
       </footer>
       {/* End footer */}
     </React.Fragment>

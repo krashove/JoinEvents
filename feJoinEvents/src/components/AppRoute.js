@@ -5,6 +5,8 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Forget from '../pages/Forget';
 import Principal from '../pages/Principal';
+import GenerarEvento from '../pages/GenerarEvento';
+
 
 function AppRoute(){
     return (
@@ -14,6 +16,7 @@ function AppRoute(){
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/forget" component={Forget} />
+                <Route exact path="/genevento" component={GenerarEvento} />
             </Switch>
         </BrowserRouter>
     );
