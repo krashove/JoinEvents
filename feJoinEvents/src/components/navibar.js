@@ -16,8 +16,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Row from "react-bootstrap/esm/Row";
-import Col from "react-bootstrap/esm/Col";
+import PersonIcon from "@material-ui/icons/Person";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -68,6 +67,7 @@ function Navibar() {
                     id="dropdown-button-dark-example1"
                     variant="secondary"
                   >
+                    <PersonIcon className={classes.icon} />
                     Usuario &nbsp;▾
                   </Dropdown.Toggle>
 
