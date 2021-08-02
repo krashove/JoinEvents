@@ -1,6 +1,7 @@
 import React from "react";
 import Navibar from "../components/navibar.js";
 import EventosDestacados from "../components/EventosDestacados.js";
+import Album from "../components/album.js";
 
 class Principal extends React.Component {
   render() {
@@ -8,6 +9,9 @@ class Principal extends React.Component {
       <React.Fragment>
         <div>
           <Navibar />
+        </div>
+        <div>
+          <Album />
         </div>
         <div>
           <EventosDestacados />
