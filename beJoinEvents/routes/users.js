@@ -86,10 +86,29 @@ router.post('/recuperaPassword', async function(req, res, next){
       return res.status(400).json({error: 'Usuario ya confirmado.'})
     }
 
+    correo.enviaCorreo(usuario, 'ResetPassw', (err) =>{
+      if(!err){
+        res.status(400).json({error: err})
+      }
+    })
+
+    return res.status(200).json({error:''})
+  } catch(error){
+    return res.status(400).json({error})
+  }
+});
+
+router.post('/updatePassword', async function(req, res, next){
+  try{
+    var usuario = await user.findByCredentials(req.body.token)
+    if(usuario.confirmado === true){
+      return res.status(400).json({error: 'Usuario ya confirmado.'})
+    }
+
     usuario.password = req.body.user.password
     await usuario.save()
 
-    correo.enviaCorreo(usuario, 'ResetPassw', (err) =>{
+    correo.enviaCorreo(usuario, 'UdpPassw', (err) =>{
       if(!err){
         res.status(400).json({error: err})
       }
