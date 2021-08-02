@@ -91,20 +91,7 @@ export default function Album() {
             >
               Conoce un mundo nuevo de eventos, explora, participa y diviertete.
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justifyContent="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Registrarse
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Buscar
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
+
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
@@ -126,7 +113,6 @@ export default function Album() {
                   <CardActions>
                     <IconButton
                       color="secondary"
-                      aria-label="upload picture"
                       component="span"
                     >
                       Favorito <FavoriteIcon />

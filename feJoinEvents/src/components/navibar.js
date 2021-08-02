@@ -9,18 +9,23 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+import IconButton from "@material-ui/core/IconButton";
 import Container from "react-bootstrap/Container";
 import AppBar from "@material-ui/core/AppBar";
-
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { makeStyles } from "@material-ui/core/styles";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import PersonIcon from "@material-ui/icons/Person";
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
+  },
+  button: {
+    margin: theme.spacing(1),
   },
 }));
 
@@ -60,25 +65,34 @@ function Navibar() {
                   </Button>
                 </Form>
               </Nav>
-
               <Nav>
-                <Dropdown>
-                  <Dropdown.Toggle
-                    id="dropdown-button-dark-example1"
-                    variant="secondary"
-                  >
-                    <PersonIcon className={classes.icon} />
-                    Usuario &nbsp;▾
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu variant="dark">
-                    <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item href="#/action-2">
-                      Cerrar Sesión
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+              <IconButton
+                variant="outlined"
+                color="secondary"
+                size="small"
+                component="span"
+              >
+                Log-In <PersonIcon />
+              </IconButton>
+              </Nav>
+              <Nav>
+              <IconButton
+                color="secondary"
+                size="small"
+                component="span"
+              >
+                Registrarse <AssignmentIndIcon />
+              </IconButton>
+              </Nav>
+              <Nav>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  className={classes.button}
+                  startIcon={<PersonIcon />}
+                >
+                  Upload
+                </Button>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -87,6 +101,29 @@ function Navibar() {
     </Navbar>
   );
 }
+// Boton Usuario
+//              <Nav>
+//                <Dropdown>
+//                  <Dropdown.Toggle
+//                    id="dropdown-button-dark-example1"
+//                    variant="secondary"
+//                  >
+//                    <PersonIcon className={classes.icon} />
+//                    Usuario &nbsp;▾
+//                  </Dropdown.Toggle>
+//
+//                  <Dropdown.Menu variant="dark">
+//                    <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
+//                    <Dropdown.Divider />
+//                    <Dropdown.Item href="#/action-2">
+//                      Cerrar Sesión
+//                    </Dropdown.Item>
+//                  </Dropdown.Menu>
+//                </Dropdown>
+//              </Nav>
+
+
+
 
 // {/* <div className="auto-container clearfix">
 //     <div className="logo-box">

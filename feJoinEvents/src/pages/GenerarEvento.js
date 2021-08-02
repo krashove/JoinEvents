@@ -13,20 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import FormularioEvento from '../components/FormularioEvento';
 import Review from '../components/Review';
 import CargarImagenEvento from '../components/CargarImagenEvento';
-
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import Navibar from "../components/navibar.js";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -80,7 +67,7 @@ function getStepContent(step) {
   }
 }
 
-export default function Checkout() {
+export default function GenerarEvento() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -94,14 +81,10 @@ export default function Checkout() {
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            JoinEvents
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <div>
+        <Navibar />
+      </div>
+      <div>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
@@ -147,6 +130,7 @@ export default function Checkout() {
           </React.Fragment>
         </Paper>
       </main>
+      </div>
     </React.Fragment>
   );
 }
