@@ -31,6 +31,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const cerrarSession = ()=>{
+  let cookies = new Cookies();
+  cookies.remove('token', {path: "/"})
+  cookies.remove('name', {path: "/"})
+  cookies.remove('tipoUser', {path: "/"})
+
+  window.location.href="./"
+}
+
 function Navibar() {
   const classes = useStyles();
 
@@ -104,7 +113,7 @@ function Navibar() {
                   <Dropdown.Menu variant="dark">
                     <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item onClick={cerrarSession}>
                       Cerrar Sesión
                     </Dropdown.Item>
                   </Dropdown.Menu>
