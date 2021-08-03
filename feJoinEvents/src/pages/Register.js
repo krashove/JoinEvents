@@ -42,7 +42,9 @@ class Register extends React.Component {
     let data = await user.json();
 
     let cookies = new Cookies();
-    cookies.set('name', data.newUser.name,{path: "/"})
+    cookies.set('token', data.usuario.token,{path: "/"})
+    cookies.set('name', data.usuario.name,{path: "/"})
+    cookies.set('tipoUser', data.usuario.tipoUser,{path: "/"})
 
     window.location.href="./" 
   };

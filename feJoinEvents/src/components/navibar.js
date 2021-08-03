@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 import "./styles/style.css";
 import "./styles/navibar.css";
@@ -31,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
 
 function Navibar() {
   const classes = useStyles();
+
+  let cookies = new Cookies()
+  let tipeuser = cookies.get('tipoUser')
+  if(!tipeuser){
+      tipeuser = 'default'
+  }
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="lg">
       <AppBar position="relative">
@@ -65,35 +74,43 @@ function Navibar() {
                   </Button>
                 </Form>
               </Nav>
+              {tipeuser == 'default'?
               <Nav>
-              <IconButton
-                variant="outlined"
-                color="secondary"
-                size="small"
-                component="span"
-              >
-                Log-In <PersonIcon />
-              </IconButton>
-              </Nav>
-              <Nav>
-              <IconButton
-                color="secondary"
-                size="small"
-                component="span"
-              >
-                Registrarse <AssignmentIndIcon />
-              </IconButton>
-              </Nav>
-              <Nav>
-                <Button
+                <IconButton
                   variant="outlined"
                   color="secondary"
-                  className={classes.button}
-                  startIcon={<PersonIcon />}
-                >
-                  Upload
-                </Button>
+                  size="small"
+                  component="span">
+                  <Link to='./login'>Log-In</Link><PersonIcon />
+                </IconButton>
+                <IconButton
+                  color="secondary"
+                  size="small"
+                  component="span"    >
+                  <Link to='./register'>Registrarse</Link> <AssignmentIndIcon />
+                </IconButton>
+              </Nav>     
+              :
+              <Nav>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    id="dropdown-button-dark-example1"
+                    variant="secondary"
+                  >
+                    <PersonIcon className={classes.icon} />
+                    Usuario &nbsp;▾
+                 </Dropdown.Toggle>
+
+                  <Dropdown.Menu variant="dark">
+                    <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item href="#/action-2">
+                      Cerrar Sesión
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Nav>
+                     }
             </Navbar.Collapse>
           </Container>
         </Toolbar>
