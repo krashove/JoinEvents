@@ -27,6 +27,20 @@ let enviaCorreo = function(doc, type, callback){
             subj = 'Bienvenid@ a la familia de JoinEvents'
             mensaj = '<b>Gracias por uniser a la gran familia de JoinEvents</b>'
             break
+        case 'ResetPassw':
+            subj = 'Por favor restablece tu contraseña '
+            mensaj = '<b>Restablece tu contraseña de JoinEvents</b>' +
+                    '<p>Escuchamos que perdió su contraseña de GitHub. ¡Lo siento por eso!' +
+                    '¡Pero no te preocupes! Puede utilizar el siguiente botón para restablecer su contraseña:</p>'+
+                    '<a href="http://localhost:3000/pasword_reset/'+ doc._id +'" class="btn btn-primary">Restablecer Contraseña</a>'
+            break
+        case 'UdpPassw':
+            subj = 'Bienvenid@ a la familia de JoinEvents'
+            mensaj = '<b>Gracias por uniser a la gran familia de JoinEvents</b>' +
+                     '<p>Escuchamos que perdió su contraseña de GitHub. ¡Lo siento por eso!' +
+                     '¡Pero no te preocupes! Puede utilizar el siguiente botón para restablecer su contraseña:</p>'+
+                     '<a href="http://localhost:3000/pasword_reset/'+ doc._id +'" class="btn btn-primary"></a>'
+            break
         default :
             return callback('Invalid sendmail type')
     }

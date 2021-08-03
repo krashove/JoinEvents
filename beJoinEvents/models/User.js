@@ -67,6 +67,10 @@ userSchema.statics.findByIdu = async function(id){
     return await this.findOne( { _id: id }).exec()
 }
 
+userSchema.statics.findemail = async function(email){
+    return await this.findOne( { email }).exec()
+}
+
 userSchema.statics.findLogin = async function(email, password){
     var usuario = await this.findOne( { email: email }).exec()
     console.log(password + ',' + usuario.password)

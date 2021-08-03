@@ -81,9 +81,9 @@ router.post('/confirm', async function(req, res, next){
 
 router.post('/recuperaPassword', async function(req, res, next){
   try{
-    var usuario = await user.findByCredentials(req.body.token)
-    if(usuario.confirmado === true){
-      return res.status(400).json({error: 'Usuario ya confirmado.'})
+    var usuario = await user.findemail(req.body.email)
+    if(!usuario){
+      return res.status(400).json({error: 'Usuario no existe.'})
     }
 
     correo.enviaCorreo(usuario, 'ResetPassw', (err) =>{
@@ -92,7 +92,7 @@ router.post('/recuperaPassword', async function(req, res, next){
       }
     })
 
-    return res.status(200).json({error:''})
+    return res.status(200).json({usuario, error:''})
   } catch(error){
     return res.status(400).json({error})
   }
@@ -100,21 +100,22 @@ router.post('/recuperaPassword', async function(req, res, next){
 
 router.post('/updatePassword', async function(req, res, next){
   try{
-    var usuario = await user.findByCredentials(req.body.token)
-    if(usuario.confirmado === true){
+    console.log(req.body.user)
+    var usuario = await user.findByIdu(req.body.user.id)
+    if(usuario.confirmado === false){
       return res.status(400).json({error: 'Usuario ya confirmado.'})
     }
 
     usuario.password = req.body.user.password
     await usuario.save()
 
-    correo.enviaCorreo(usuario, 'UdpPassw', (err) =>{
+    /*correo.enviaCorreo(usuario, 'UdpPassw', (err) =>{
       if(!err){
         res.status(400).json({error: err})
       }
-    })
+    })*/
 
-    return res.status(200).json({error:''})
+    return res.status(200).json({usuario, error:''})
   } catch(error){
     return res.status(400).json({error})
   }
