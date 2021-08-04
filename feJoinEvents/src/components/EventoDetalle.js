@@ -89,7 +89,7 @@ export default function EventoDetalle(props) {
               color="primary"
               className={classes.margin}
             >
-              Theme Provider
+              Participar
             </Button>
           </ThemeProvider>
         </div>
