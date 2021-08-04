@@ -33,7 +33,8 @@ class Forget extends React.Component {
 
     let user = await fetch( url_web, requestOptions)
     let data = await user.json();
-
+    
+    this.setState({useremil: data.usuario.email});
     this.setState({message:false})
   };
 

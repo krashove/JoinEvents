@@ -1,17 +1,7 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
-import FormGroup from '@material-ui/core/FormGroup';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import {Grid, Typography, TextField, FormControlLabel, Radio, RadioGroup} from '@material-ui/core';
 
-const GreenCheckbox = withStyles({
+/*const GreenCheckbox = withStyles({
   root: {
     color: green[400],
     '&$checked': {
@@ -19,110 +9,127 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+})((props) => <Checkbox color="default" {...props} />);*/
 
-export default function FormularioEvento() {
-  const [state, setState] = React.useState({
+class FormularioEvento extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {  tipoEvento: 'Normal',
+                    nombre: 'Nombre de Evento',
+                    cantidad: 'Cantidad',
+                    hora: 'Hora',
+                    fecha: 'Fecha',
+                    descripción: 'Descripción',
+                    etiquetas: 'Etiquetas',
+                    precio: 'Precio'};
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
+  };
+//export default function FormularioEvento() {
+  /*const [state, setState] = React.useState({
   });
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
-  };
-  return (
-    <React.Fragment>
-
-      <Typography variant="h6" gutterBottom>
-        Ubicación
-      </Typography>
-      <FormControlLabel
-        control={
-          <Checkbox name="checkedC"
-            color="primary"
+  };*/
+  render(){
+    return (
+      <React.Fragment>
+        <Typography variant="h6" gutterBottom>Ubicación</Typography>
+        <RadioGroup row onChange={this.handleChange}  defaultValue="Normal" aria-label="Ubicación" name="tipoEvento">
+          <FormControlLabel
+            control={ <Radio /> }
+            label="Normal"
+            value="Normal" 
           />
-        }
-        label="Normal"
-      />
-
-      <FormControlLabel
-
-        control={
-          <Checkbox name="checkedC"
-            color="primary"
+          <FormControlLabel
+            control={ <Radio /> }
+            label="Destacado"
+            value="Destacado" 
           />
-        }
-        label="Destacado"
-      />
-
-
-
-      <Typography variant="h6" gutterBottom>
-        Evento Nuevo
-      </Typography>
-      <Grid container spacing={5}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="Nombre de Evento"
-            name="Nombre de Evento"
-            label="Nombre de Evento"
-            fullWidth
-            autoComplete="given-name"
-          />
+        </RadioGroup>
+        
+        <Typography variant="h6" gutterBottom> Evento Nuevo </Typography>
+        <Grid container spacing={5}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              onChange={this.handleChange}
+              id="Nombre de Evento"
+              name="nombre"
+              label="Nombre de Evento"
+              fullWidth
+              autoComplete="given-name"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              onChange={this.handleChange}
+              id="Etiquetas"
+              name="etiquetas"
+              label="Etiquetas"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              onChange={this.handleChange}
+              id="Descripción"
+              name="descripción"
+              label="Descripción"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              onChange={this.handleChange}
+              id="Fecha"
+              name="fecha"
+              label="Fecha"
+              fullWidth
+              autoComplete="bday"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              onChange={this.handleChange}
+              id="Hora"
+              name="hora"
+              label ="Hora"
+              fullWidth />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              onChange={this.handleChange}
+              required
+              id="Cantidad"
+              name="cantidad"
+              label="Cantidad"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              onChange={this.handleChange}
+              id="Precio"
+              name="precio"
+              label="Precio de entrada: s/. "
+              fullWidth
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="Etiquetas"
-            name="Etiquetas"
-            label="Etiquetas"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="Descripción"
-            name="Descripción"
-            label="Descripción"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="Fecha"
-            name="Fecha"
-            label="Fecha"
-            fullWidth
-            autoComplete="bday"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="Hora"
-            name="Hora"
-            label ="Hora"
-            fullWidth />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="Empresa"
-            name="Empresa"
-            label="Empresa"
-            fullWidth
-            autoComplete="organization"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="Precio"
-            name="Precio"
-            label="Precio de entrada: s/. "
-            fullWidth
-          />
-        </Grid>
-      </Grid>
-    </React.Fragment>
-  );
+      </React.Fragment>
+    );
+  }
 }
+
+export default FormularioEvento;
