@@ -108,6 +108,19 @@ router.post('/listDisponibles', async function(req, res, next){
     }
 });
 
+router.post('/listDisponiblesDestado', async function(req, res, next){
+    try{
+        var eventos = await events.findDisponiblesDestacados()
+
+        return res.status(200).json({
+            eventos,
+            error: '' 
+        })
+    } catch(error) {
+        return res.status(400).json({error})
+    }
+});
+
 router.post('/listProveedor', async function(req, res, next){
     try{
         var eventos = await events.findProveedor(req.body.proveedor.id)

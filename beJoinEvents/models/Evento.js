@@ -57,11 +57,15 @@ eventoSchema.statics.findByIdu = async function(id){
 }
 
 eventoSchema.statics.findDisponibles = async function(){
-    return await this.find( { estado: 'publicado' }).exec()
+    return await this.find( { estado: 'publicado', tipoEvento: 'Normal' }).limit(9).exec()
 }
 
 eventoSchema.statics.findProveedor = async function(idProv){
     return await this.find( { idProveedor: idProv }).exec()
+}
+
+eventoSchema.statics.findDisponiblesDestacados = async function(){
+    return await this.find( { estado: 'publicado', tipoEvento: 'Destacado' }).limit(8).exec()
 }
 
 module.exports = mongoose.model('Evento', eventoSchema);

@@ -41,7 +41,7 @@ class MyProvider extends React.Component {
                 token: usertoken
             },
             evento:{
-                descripción: this.state.descripción,
+                descripcion: this.state.descripcion,
                 nombre: this.state.nombre,
                 fechaInicio: mydate,
                 fechaFinal: (mydate+5),

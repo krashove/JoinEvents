@@ -15,17 +15,13 @@ export default class EventosDestacados extends Component {
         </Container>
         <Container fluid="sm">
           <Row xs={2} md={4} className="g-4">
-            {Array.from({ length: 8 }).map((_, idx) => (
+            {this.props.cards.map((carditm) => (
               <Col>
                 <Card>
                   <Card.Img variant="top" src="./images/background/6.jpg" />
                   <Card.Body>
-                    <Card.Title>Card title</Card.Title>
-                    <Card.Text>
-                      This is a longer card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
+                    <Card.Title>{carditm.nombre}</Card.Title>
+                    <Card.Text> {carditm.descripcion} </Card.Text>
                     <Container fluid="md">
                       <Row className="justify-content-md-center justify-content-sm-center">
                         <Col>

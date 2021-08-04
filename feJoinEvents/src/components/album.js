@@ -13,24 +13,12 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+//import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Container from "@material-ui/core/Container";
-//import Link from "@material-ui/core/Link";
 
-/*function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}*/
-
-const useStyles = makeStyles((theme) => ({
+const styles = theme => ({
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -60,13 +48,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
-}));
+});
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+class Album extends React.Component {
 
-export default function Album() {
-  const classes = useStyles();
-
+  render(){
+    const { classes } = this.props;
+  
   return (
     <React.Fragment>
       <CssBaseline />
@@ -97,24 +85,18 @@ export default function Album() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {this.props.cards.map((card) => (
+              <Grid item key={card._id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="./images/gallery/2.jpg"
-                  />
+                  <CardMedia className={classes.cardMedia} image="./images/gallery/2.jpg" />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Evento
+                      {card.nombre}
                     </Typography>
-                    <Typography>Descripción de evento.</Typography>
+                    <Typography>{card.descripcion}</Typography>
                   </CardContent>
                   <CardActions>
-                    <IconButton
-                      color="secondary"
-                      component="span"
-                    >
+                    <IconButton color="secondary" component="span" >
                       Favorito <FavoriteIcon />
                     </IconButton>
                     <Button variant="contained" size="small" color="primary">
@@ -145,3 +127,10 @@ export default function Album() {
     </React.Fragment>
   );
 }
+}
+
+Album.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Album);
