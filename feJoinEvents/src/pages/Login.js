@@ -38,7 +38,7 @@ class Login extends React.Component {
 
     let cookies = new Cookies();
     cookies.set('token', data.usuario.token,{path: "/"})
-    cookies.set('name', data.usuario.name,{path: "/"})
+    cookies.set('name', data.usuario.nombre,{path: "/"})
     cookies.set('tipoUser', data.usuario.tipoUser,{path: "/"})
 
     window.location.href="./"

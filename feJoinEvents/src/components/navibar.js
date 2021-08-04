@@ -48,6 +48,7 @@ function Navibar() {
   if(!tipeuser){
       tipeuser = 'default'
   }
+  let usuario = cookies.get('name')
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="lg">
@@ -107,7 +108,7 @@ function Navibar() {
                     variant="secondary"
                   >
                     <PersonIcon className={classes.icon} />
-                    Usuario &nbsp;▾
+                    {usuario} &nbsp;▾
                  </Dropdown.Toggle>
 
                   <Dropdown.Menu variant="dark">
