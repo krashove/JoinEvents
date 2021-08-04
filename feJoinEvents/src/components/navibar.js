@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from 'react-router-dom';
-import Cookies from 'universal-cookie';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 import "./styles/style.css";
 import "./styles/navibar.css";
@@ -14,13 +14,11 @@ import Button from "react-bootstrap/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Container from "react-bootstrap/Container";
 import AppBar from "@material-ui/core/AppBar";
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { makeStyles } from "@material-ui/core/styles";
-import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import PersonIcon from "@material-ui/icons/Person";
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -31,24 +29,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cerrarSession = ()=>{
+const cerrarSession = () => {
   let cookies = new Cookies();
-  cookies.remove('token', {path: "/"})
-  cookies.remove('name', {path: "/"})
-  cookies.remove('tipoUser', {path: "/"})
+  cookies.remove("token", { path: "/" });
+  cookies.remove("name", { path: "/" });
+  cookies.remove("tipoUser", { path: "/" });
 
-  window.location.href="./"
-}
+  window.location.href = "./";
+};
 
-function Navibar() {
+function Navibar(props) {
   const classes = useStyles();
 
-  let cookies = new Cookies()
-  let tipeuser = cookies.get('tipoUser')
-  if(!tipeuser){
-      tipeuser = 'default'
+  let cookies = new Cookies();
+  let tipeuser = cookies.get("tipoUser");
+  if (!tipeuser) {
+    tipeuser = "default";
   }
-  let usuario = cookies.get('name')
+  let usuario = cookies.get("name");
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="lg">
@@ -61,10 +59,10 @@ function Navibar() {
               alt=""
             />
           </Navbar.Brand>
-          <MeetingRoomIcon className={classes.icon} />
+          {props.iconRoute}
           <Nav>
             <Typography variant="h6" color="inherit" noWrap>
-              Home &nbsp;&nbsp;
+              {props.route} &nbsp;&nbsp;
             </Typography>
           </Nav>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -84,43 +82,43 @@ function Navibar() {
                   </Button>
                 </Form>
               </Nav>
-              {tipeuser == 'default'?
-              <Nav>
-                <IconButton
-                  variant="outlined"
-                  color="secondary"
-                  size="small"
-                  component="span">
-                  <Link to='./login'>Log-In</Link><PersonIcon />
-                </IconButton>
-                <IconButton
-                  color="secondary"
-                  size="small"
-                  component="span"    >
-                  <Link to='./register'>Registrarse</Link> <AssignmentIndIcon />
-                </IconButton>
-              </Nav>     
-              :
-              <Nav>
-                <Dropdown>
-                  <Dropdown.Toggle
-                    id="dropdown-button-dark-example1"
-                    variant="secondary"
+              {tipeuser == "default" ? (
+                <Nav>
+                  <IconButton
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                    component="span"
                   >
-                    <PersonIcon className={classes.icon} />
-                    {usuario} &nbsp;▾
-                 </Dropdown.Toggle>
+                    <Link to="./login">Log-In</Link>
+                    <PersonIcon />
+                  </IconButton>
+                  <IconButton color="secondary" size="small" component="span">
+                    <Link to="./register">Registrarse</Link>{" "}
+                    <AssignmentIndIcon />
+                  </IconButton>
+                </Nav>
+              ) : (
+                <Nav>
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      id="dropdown-button-dark-example1"
+                      variant="secondary"
+                    >
+                      <PersonIcon className={classes.icon} />
+                      {usuario} &nbsp;▾
+                    </Dropdown.Toggle>
 
-                  <Dropdown.Menu variant="dark">
-                    <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item onClick={cerrarSession}>
-                      Cerrar Sesión
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Nav>
-                     }
+                    <Dropdown.Menu variant="dark">
+                      <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item onClick={cerrarSession}>
+                        Cerrar Sesión
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Nav>
+              )}
             </Navbar.Collapse>
           </Container>
         </Toolbar>
@@ -148,9 +146,6 @@ function Navibar() {
 //                  </Dropdown.Menu>
 //                </Dropdown>
 //              </Nav>
-
-
-
 
 // {/* <div className="auto-container clearfix">
 //     <div className="logo-box">

@@ -1,20 +1,22 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Navibar from "../components/navibar.js";
-import StepNewEvent from '../components/stepNewEvent';
+import StepNewEvent from "../components/stepNewEvent";
+
+import CreateIcon from "@material-ui/icons/Create";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'relative',
+    position: "relative",
   },
   layout: {
-    width: 'auto',
+    width: "auto",
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: "auto",
+      marginRight: "auto",
     },
   },
   paper: {
@@ -31,20 +33,20 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 0, 5),
   },
   buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
+    display: "flex",
+    justifyContent: "flex-end",
   },
   button: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
   },
   root: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(1),
     },
   },
   inputSelect: {
-    display: 'none',
+    display: "none",
   },
   listItem: {
     padding: theme.spacing(1, 0),
@@ -57,19 +59,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function GenerarEvento() {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <div>
-        <Navibar />
+        <Navibar route="Generar Evento" iconRoute={<CreateIcon />} />
       </div>
       <div>
-      <main className={classes.layout}>
-        <StepNewEvent clases={classes} />
-      </main>
+        <main className={classes.layout}>
+          <StepNewEvent clases={classes} />
+        </main>
       </div>
     </React.Fragment>
   );
