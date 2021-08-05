@@ -4,12 +4,14 @@ import classNames from "classnames";
 import Navibar from "../components/navibar.js";
 import Favoritos from '../components/Favoritos';
 import { makeStyles } from "@material-ui/core/styles";
-import Camera from "@material-ui/icons/Camera";
+import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import Palette from "@material-ui/icons/Palette";
 import GridContainer from "../components/Grid/GridContainer.js";
 import GridItem from "../components/Grid/GridItem.js";
-import profile from "../components/images/profile/foto_perfil.png";
-import styles from "../components/styles/profilePage.js";
+import profile from "../components/images/profile/foto_perfil.jpg";
+import styles from "../components/profilePage.js";
+import Parallax from "../components/Parallax.js";
+
 const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {
@@ -26,6 +28,11 @@ export default function ProfilePage(props) {
       <div>
         <Navibar route="Profile" iconRoute={<MeetingRoomIcon />} />
       </div>
+      <Parallax
+        small
+        filter
+        image={require("../components/images/profile/profile-bg.jpg").default}
+      />
       <div>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div>
@@ -48,7 +55,9 @@ export default function ProfilePage(props) {
                   Tu perfil, tus favoritos, tu descripción.{" "}
                 </p>
               </div>
+              <div>
                 < Favoritos />
+              </div>
             </div>
           </div>
         </div>
