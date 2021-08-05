@@ -4,6 +4,7 @@ import {
   makeStyles,
   createTheme,
   ThemeProvider,
+  withStyles,
 } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
@@ -18,7 +19,13 @@ import Button from "@material-ui/core/Button";
 import { green, blue } from "@material-ui/core/colors";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
-const useStyles = makeStyles((theme) => ({
+const tema = createTheme({
+  palette: {
+    primary: green,
+  },
+});
+
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
   },
@@ -35,32 +42,35 @@ const useStyles = makeStyles((theme) => ({
   },
   controls: {
     display: "flex",
-    paddingLeft: theme.spacing(30),
-    paddingBottom: theme.spacing(1),
+    paddingLeft: tema.spacing(30),
+    paddingBottom: tema.spacing(1),
   },
   margin: {
-    margin: theme.spacing(1),
+    margin: tema.spacing(1),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: tema.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: tema.palette.text.secondary,
   },
   buttons: {
     display: "flex",
-    paddingLeft: theme.spacing(1),
+    paddingLeft: tema.spacing(1),
   },
 }));
 
-const theme = createTheme({
-  palette: {
-    primary: green,
-    secindary: blue,
+const ColorButton = withStyles(() => ({
+  root: {
+    color: tema.palette.getContrastText(green[500]),
+    backgroundColor: green[500],
+    "&:hover": {
+      backgroundColor: green[700],
+    },
   },
-});
+}))(Button);
 
 export default function EventoDetalle(props) {
-  const classes = useStyles();
+  const classes = useStyles(tema);
 
   return (
     <div>
@@ -97,15 +107,13 @@ export default function EventoDetalle(props) {
             <IconButton color="Secondary">
               <FavoriteIcon />
             </IconButton>
-            <ThemeProvider theme={theme}>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.margin}
-              >
-                <spam style={{ color: "white" }}>Participar</spam>
-              </Button>
-            </ThemeProvider>
+            <ColorButton
+              variant="contained"
+              color="primary"
+              className={classes.margin}
+            >
+              <spam style={{ color: "white" }}>Participar</spam>
+            </ColorButton>
           </Grid>
         </div>
         <div className={classes.root}>
@@ -121,7 +129,7 @@ export default function EventoDetalle(props) {
                     <h5>{props.card.origen}</h5>
                     <Button
                       variant="outlined"
-                      color="secondary"
+                      color="primary"
                       href={props.card.twitter}
                     >
                       <TwitterIcon />
