@@ -64,8 +64,6 @@ class InfoUser extends React.Component{
             this.setState({eventos: []})
         }
         this.setState({load: true})
-
-        console.log(data)
     }
 
     render(){

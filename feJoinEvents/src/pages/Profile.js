@@ -5,6 +5,7 @@ import Navibar from "../components/navibar.js";
 import { makeStyles } from "@material-ui/core/styles";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 //import Palette from "@material-ui/icons/Palette";
+import PersonIcon from "@material-ui/icons/Person";
 
 import styles from "../components/profilePage.js";
 import Parallax from "../components/Parallax.js";
@@ -27,7 +28,7 @@ export default function ProfilePage(props) {
   return (
     <React.Fragment>
       <div>
-        <Navibar route="Profile" iconRoute={<MeetingRoomIcon />} />
+        <Navibar route="Profile" iconRoute={<PersonIcon />} />
       </div>
       <Parallax small filter image={require("../components/images/profile/profile-bg.jpg").default} />
       <div>
