@@ -11,6 +11,8 @@ import GridItem from "../components/Grid/GridItem.js";
 import profile from "../components/images/profile/foto_perfil.jpg";
 import styles from "../components/profilePage.js";
 import Parallax from "../components/Parallax.js";
+import Button from "@material-ui/core/Button";
+
 
 const useStyles = makeStyles(styles);
 
@@ -45,14 +47,22 @@ export default function ProfilePage(props) {
                     </div>
                     <div className={classes.name}>
                       <h3 className={classes.title}>Usuario</h3>
-                      <h6>USUARIO</h6>
+                      <h6>Nombre Completo</h6>
+                      <h6>correo_ejemplo@abc.com</h6>
+                      <Button size="small" color="primary">
+                        Editar
+                      </Button>
                     </div>
+                    <Button size="large" color="secondary">
+                      Generar Evento
+                    </Button>
                   </div>
                 </GridItem>
               </GridContainer>
               <div className={classes.description}>
                 <p>
-                  Tu perfil, tus favoritos, tu descripción.{" "}
+                  Este es tu espacio, disfruta de tus eventos
+                  favoritos las veces que quieras, con solo presionar un botón.{" "}
                 </p>
               </div>
               <div>
