@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import {
   makeStyles,
@@ -7,16 +7,17 @@ import {
 } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { green } from "@material-ui/core/colors";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
   },
@@ -33,16 +34,20 @@ const useStyles = makeStyles((theme) => ({
   },
   controls: {
     display: "flex",
-    alignItems: "center",
-    paddingLeft: theme.spacing(1),
+    paddingLeft: theme.spacing(30),
     paddingBottom: theme.spacing(1),
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
   },
   margin: {
     margin: theme.spacing(1),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  buttons: {
+    display: "flex",
+    paddingLeft: theme.spacing(1),
   },
 }));
 
@@ -77,21 +82,39 @@ export default function EventoDetalle(props) {
                 {props.card.titulo}
               </Typography>
             </CardContent>
+            <div className={classes.controls}>Precio: {props.card.precio}</div>
           </div>
         </Card>
-        <div>
-          <IconButton color="Secondary">
-            <FavoriteIcon />
-          </IconButton>
-          <ThemeProvider theme={theme}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.margin}
-            >
-              Participar
-            </Button>
-          </ThemeProvider>
+        <div className={classes.buttons}>
+          <Grid
+            container
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <IconButton color="Secondary">
+              <FavoriteIcon />
+            </IconButton>
+            <ThemeProvider theme={theme}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.margin}
+              >
+                <spam style={{ color: "white" }}>Participar</spam>
+              </Button>
+            </ThemeProvider>
+          </Grid>
+        </div>
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            <Grid item xs={8}>
+              <Paper className={classes.paper}>{props.card.detalles}</Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>Construyendo...</Paper>
+            </Grid>
+          </Grid>
         </div>
       </Container>
     </div>

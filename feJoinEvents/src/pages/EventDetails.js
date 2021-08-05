@@ -12,6 +12,7 @@ export default class EventDetails extends Component {
       titulo: "Titulo",
       detalles:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, excepturi optio vel esse at reiciendis ut nesciunt hic modi voluptatum quae facilis quo, itaque distinctio. Facilis doloremque debitis minima dolorum.",
+      precio: "$",
     },
   };
 
