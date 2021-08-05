@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
+import GridContainer from "../components/Grid/GridContainer.js";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -50,6 +51,11 @@ export default function Album() {
   return (
     <React.Fragment>
       <main>
+      <GridContainer justify="center">
+        <div className={classes.name}>
+          <h3 className={classes.title}>TUS FAVORITOS</h3>
+        </div>
+      </GridContainer>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
             {cards.map((card) => (
