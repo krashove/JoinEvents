@@ -15,9 +15,10 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import { green } from "@material-ui/core/colors";
+import { green, blue } from "@material-ui/core/colors";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
@@ -54,6 +55,7 @@ const useStyles = makeStyles(() => ({
 const theme = createTheme({
   palette: {
     primary: green,
+    secindary: blue,
   },
 });
 
@@ -112,7 +114,28 @@ export default function EventoDetalle(props) {
               <Paper className={classes.paper}>{props.card.detalles}</Paper>
             </Grid>
             <Grid item xs>
-              <Paper className={classes.paper}>Construyendo...</Paper>
+              <Paper className={classes.paper}>
+                <div>
+                  <h5>Ofrecido por:</h5>
+                  <p>
+                    <h5>{props.card.origen}</h5>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      href={props.card.twitter}
+                    >
+                      <TwitterIcon />
+                      Seguir
+                    </Button>
+                  </p>
+                  <h5>Fecha y hora:</h5>
+                  <p>
+                    {props.card.fecha} - {props.card.hora}
+                  </p>
+                  <h5>Plataforma:</h5>
+                  <p>{props.card.plataforma}</p>
+                </div>
+              </Paper>
             </Grid>
           </Grid>
         </div>

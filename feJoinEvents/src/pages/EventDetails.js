@@ -8,11 +8,15 @@ export default class EventDetails extends Component {
   state = {
     evento: {
       img: "./images/background/11.jpg",
-      fecha: "Fecha",
-      titulo: "Titulo",
+      fecha: "05/08",
+      titulo: "Blockchain",
       detalles:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, excepturi optio vel esse at reiciendis ut nesciunt hic modi voluptatum quae facilis quo, itaque distinctio. Facilis doloremque debitis minima dolorum.",
-      precio: "$",
+      precio: "$1.99",
+      origen: "TEDx",
+      hora: "20:00",
+      plataforma: "Amazon Prime",
+      twitter: "https://twitter.com/TEDx",
     },
   };
 
