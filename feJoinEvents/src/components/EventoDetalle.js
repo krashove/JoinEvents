@@ -66,7 +66,7 @@ export default function EventoDetalle(props) {
         <Card className={classes.root}>
           <CardMedia
             className={classes.cover}
-            image={props.card.img}
+            image={(props.card.img) ? props.card.img : "../images/background/11.jpg"}
             title={props.card.titulo} />
           <div className={classes.details}>
             <CardContent className={classes.content}>

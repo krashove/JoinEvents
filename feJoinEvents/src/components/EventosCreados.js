@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -41,9 +42,32 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  textobuttonv:{
+    color: '#3f51b5'
+  },
 }));
 
-//const cards = [1, 2, 3, 4, 5, 6];
+async function eliminarEvento (id, e){
+  e.preventDefault()
+  /*let cookies = new Cookies();
+  let iduser = cookies.get("id");
+  */
+  if (window.confirm("Desea eliminar evento?")) {
+
+    let url_web = process.env.REACT_APP_URL_WEBSERVICE + '/events/eliminar'
+    let requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: id})
+    }
+    let user = await fetch( url_web, requestOptions)
+    let data = await user.json();
+    window.alert('se elemino de evento '+ data.infodelete)
+    window.location.reload(false);
+  }
+  
+  //this.setState({email: data.usuario.email})
+}
 
 export default function Album(props) {
   const classes = useStyles();
@@ -73,9 +97,9 @@ export default function Album(props) {
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
-                      Ver mas
+                      <Link className={classes.textobuttonv} to={`/eventdetails/${card._id}`} >Ver mas</Link> 
                     </Button>
-                    <Button size="small" color="secondary">
+                    <Button onClick={eliminarEvento.bind(this, card._id )} size="small" color="secondary">
                       Eliminar
                     </Button>
                   </CardActions>

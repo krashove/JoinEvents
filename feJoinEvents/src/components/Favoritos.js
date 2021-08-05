@@ -9,6 +9,7 @@ import GridContainer from "../components/Grid/GridContainer.js";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Link } from 'react-router-dom';
 //import Favorite from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
+  },
+  textobuttonv:{
+    color: 'white'
   },
 }));
 
@@ -76,10 +80,10 @@ export default function Album(props) {
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
-                      Ver mas
+                      <Link to={`/eventdetails/${card._id}`} >Ver mas</Link> 
                     </Button>
                     <Button size="small" color="primary">
-                      Participar
+                      <Link to={`/eventparticipation`} >Participar</Link> 
                     </Button>
                   </CardActions>
                 </Card>

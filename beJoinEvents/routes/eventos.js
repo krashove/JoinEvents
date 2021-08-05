@@ -101,9 +101,6 @@ router.post('/getinfo', async function(req, res, next){
 });
 
 router.post('/eliminar', async function(req, res, next){
-    if (!req.body.evento){
-        return res.status(401).json({message: 'No envio parametros de autenticacion.'});
-    }
     try{
         var infodelete = await events.deleteOne({ _id: req.body.token})
     
