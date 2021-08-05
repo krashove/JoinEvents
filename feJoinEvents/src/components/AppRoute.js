@@ -8,6 +8,7 @@ import Principal from "../pages/Principal";
 import ResetPass from "../pages/ResetPass";
 import GenerarEvento from "../pages/GenerarEvento";
 import EventDetails from "../pages/EventDetails";
+import ParticiparEvento from "../pages/ParticiparEvento";
 
 function AppRoute() {
   return (
@@ -20,6 +21,7 @@ function AppRoute() {
         <Route exact path="/pasword_reset/:id" component={ResetPass} />
         <Route exact path="/genevento" component={GenerarEvento} />
         <Route exact path="/eventdetails" component={EventDetails} />
+        <Route exact path="/eventparticipation" component={ParticiparEvento} />
       </Switch>
     </BrowserRouter>
   );
