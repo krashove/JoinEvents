@@ -85,7 +85,7 @@ export default function ParticiparEvento() {
     <React.Fragment>
       <CssBaseline />
       <div>
-        <Navibar route="Generar Evento" iconRoute={<CreateIcon />} />
+        <Navibar route="Participar Evento" iconRoute={<CreateIcon />} />
       </div>
 
       <main className={classes.layout}>
