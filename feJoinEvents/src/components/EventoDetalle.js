@@ -1,22 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import {
-  makeStyles,
-  createTheme,
-  ThemeProvider,
-  withStyles,
-} from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Card from "@material-ui/core/Card";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
+import { makeStyles, createTheme, withStyles,} from "@material-ui/core/styles";
+import {Container, Card, Paper, Grid, IconButton, CardContent, CardMedia, Typography, Button} from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { green, blue } from "@material-ui/core/colors";
+import { green } from "@material-ui/core/colors";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
 const tema = createTheme({
@@ -79,20 +67,14 @@ export default function EventoDetalle(props) {
           <CardMedia
             className={classes.cover}
             image={props.card.img}
-            title={props.card.titulo}
-          />
+            title={props.card.titulo} />
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography
                 component="h5"
                 variant="subtitle1"
-                color="textSecondary"
-              >
-                {props.card.fecha}
-              </Typography>
-              <Typography variant="h5" color="textPrimary">
-                {props.card.titulo}
-              </Typography>
+                color="textSecondary" > {props.card.fecha} </Typography>
+              <Typography variant="h5" color="textPrimary"> {props.card.titulo} </Typography>
             </CardContent>
             <div className={classes.controls}>Precio: {props.card.precio}</div>
           </div>
@@ -102,17 +84,15 @@ export default function EventoDetalle(props) {
             container
             direction="row"
             justifyContent="space-between"
-            alignItems="center"
-          >
-            <IconButton color="Secondary">
+            alignItems="center" >
+            <IconButton color="primary">
               <FavoriteIcon />
             </IconButton>
             <ColorButton
               variant="contained"
               color="primary"
-              className={classes.margin}
-            >
-              <spam style={{ color: "white" }}>Participar</spam>
+              className={classes.margin} >
+              <Link to='./' style={{ color: "white" }}>Participar</Link>
             </ColorButton>
           </Grid>
         </div>
@@ -125,21 +105,16 @@ export default function EventoDetalle(props) {
               <Paper className={classes.paper}>
                 <div>
                   <h5>Ofrecido por:</h5>
+                  <h5>{props.card.origen}</h5>
                   <p>
-                    <h5>{props.card.origen}</h5>
                     <Button
                       variant="outlined"
                       color="primary"
-                      href={props.card.twitter}
-                    >
-                      <TwitterIcon />
-                      Seguir
-                    </Button>
+                      href={props.card.twitter} >
+                      <TwitterIcon /> Seguir </Button>
                   </p>
                   <h5>Fecha y hora:</h5>
-                  <p>
-                    {props.card.fecha} - {props.card.hora}
-                  </p>
+                  <p> {props.card.fecha} - {props.card.hora} </p>
                   <h5>Plataforma:</h5>
                   <p>{props.card.plataforma}</p>
                 </div>

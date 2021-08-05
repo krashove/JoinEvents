@@ -19,7 +19,7 @@ function AppRoute() {
         <Route exact path="/forget" component={Forget} />
         <Route exact path="/pasword_reset/:id" component={ResetPass} />
         <Route exact path="/genevento" component={GenerarEvento} />
-        <Route exact path="/eventdetails" component={EventDetails} />
+        <Route exact path="/eventdetails/:id" render={(props) => <EventDetails parametros={props.match.params} /> } />
       </Switch>
     </BrowserRouter>
   );

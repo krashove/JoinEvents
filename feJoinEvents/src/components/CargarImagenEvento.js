@@ -6,7 +6,9 @@ import {Typography, Paper, Stepper, Step, StepLabel, Button} from '@material-ui/
 import {ContextEvent} from '../context/ProviderEvente'
 
 class UploadButtons extends React.Component {
+
   render(){
+
     return (
       <ContextEvent.Consumer>
         {(context) => (
@@ -29,6 +31,7 @@ class UploadButtons extends React.Component {
                     className={this.props.clases.inputSelect}
                     id="icon-button-file"
                     type="file"
+                    onChange={(e) => context.convertirBase64(e.target.files)}
                   />
                   <label htmlFor="icon-button-file">
                     <IconButton color="primary" aria-label="upload picture" component="span">

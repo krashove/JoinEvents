@@ -48,6 +48,9 @@ var eventoSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         default: 'creado'
+    },
+    imagen:{
+        type: String
     }
 })
 
