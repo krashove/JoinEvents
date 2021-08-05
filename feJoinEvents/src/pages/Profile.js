@@ -3,6 +3,7 @@ import React from "react";
 import classNames from "classnames";
 import Navibar from "../components/navibar.js";
 import Favoritos from '../components/Favoritos';
+import EventosCreados from '../components/EventosCreados';
 import { makeStyles } from "@material-ui/core/styles";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import Palette from "@material-ui/icons/Palette";
@@ -64,6 +65,9 @@ export default function ProfilePage(props) {
                   Este es tu espacio, disfruta de tus eventos
                   favoritos las veces que quieras, con solo presionar un botón.{" "}
                 </p>
+              </div>
+              <div>
+                < EventosCreados />
               </div>
               <div>
                 < Favoritos />
