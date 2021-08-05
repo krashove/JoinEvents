@@ -1,6 +1,6 @@
-import { container, title } from "components/styles/estilos_varios.js";
+import { container, title } from "../components/styles/estilos_varios.js";
 
-import imagesStyle from "components/styles/imagesStyles.js";
+import imagesStyle from "../components/styles/imagesStyles.js";
 
 const profilePageStyle = {
   container,

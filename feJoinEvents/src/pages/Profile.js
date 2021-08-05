@@ -3,23 +3,13 @@ import React from "react";
 import classNames from "classnames";
 import Navibar from "../components/navibar.js";
 import Favoritos from '../components/Favoritos';
-
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
 import Camera from "@material-ui/icons/Camera";
 import Palette from "@material-ui/icons/Palette";
-import Favorite from "@material-ui/icons/Favorite";
-// core components
-import Footer from "components/Footer/Footer.js";
-import Button from "components/CustomButtons/Button.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import NavPills from "components/NavPills/NavPills.js";
-
-import profile from "components/images/profile/foto_perfil.png";
-
-import styles from "components/styles/profilePage.js";
-
+import GridContainer from "../components/Grid/GridContainer.js";
+import GridItem from "../components/Grid/GridItem.js";
+import profile from "../components/images/profile/foto_perfil.png";
+import styles from "../components/styles/profilePage.js";
 const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {

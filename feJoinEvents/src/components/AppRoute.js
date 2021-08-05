@@ -9,6 +9,7 @@ import ResetPass from "../pages/ResetPass";
 import GenerarEvento from "../pages/GenerarEvento";
 import EventDetails from "../pages/EventDetails";
 import ParticiparEvento from "../pages/ParticiparEvento";
+import Profile from "../pages/Profile";
 
 function AppRoute() {
   return (
@@ -22,6 +23,7 @@ function AppRoute() {
         <Route exact path="/genevento" component={GenerarEvento} />
         <Route exact path="/eventdetails/:id" render={(props) => <EventDetails parametros={props.match.params} /> } />
         <Route exact path="/eventparticipation" component={ParticiparEvento} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </BrowserRouter>
   );
