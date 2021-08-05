@@ -34,6 +34,7 @@ const cerrarSession = () => {
   cookies.remove("token", { path: "/" });
   cookies.remove("name", { path: "/" });
   cookies.remove("tipoUser", { path: "/" });
+  cookies.remove('id', {path: "/"})
 
   window.location.href = "./";
 };
@@ -47,6 +48,7 @@ function Navibar(props) {
     tipeuser = "default";
   }
   let usuario = cookies.get("name");
+  //let id = cookies.get("id");
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="lg">
@@ -103,14 +105,20 @@ function Navibar(props) {
                   <Dropdown>
                     <Dropdown.Toggle
                       id="dropdown-button-dark-example1"
-                      variant="secondary"
-                    >
+                      variant="secondary" >
                       <PersonIcon className={classes.icon} />
                       {usuario} &nbsp;▾
                     </Dropdown.Toggle>
-
                     <Dropdown.Menu variant="dark">
-                      <Dropdown.Item href="#/action-1">Mi Perfil</Dropdown.Item>
+                      <Dropdown.Item href={`/profile`}>Mi Perfil</Dropdown.Item>
+                      {tipeuser === "proveedor" ? 
+                        <React.Fragment>
+                          <Dropdown.Item href="/genevento">Crear Evento</Dropdown.Item>
+                          <Dropdown.Item href="/profile">Mis Eventos</Dropdown.Item>
+                        </React.Fragment>
+                      :
+                        <Dropdown.Item href="/profile">Favoritos</Dropdown.Item>
+                      }
                       <Dropdown.Divider />
                       <Dropdown.Item onClick={cerrarSession}>
                         Cerrar Sesión

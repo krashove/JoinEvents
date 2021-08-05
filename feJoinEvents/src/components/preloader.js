@@ -1,6 +1,6 @@
 import React from 'react'
 
-import loader from './images/icons/preloader.svg'
+//import loader from './images/icons/preloader.svg'
 
 export default class Preloader extends React.Component{
     render(){

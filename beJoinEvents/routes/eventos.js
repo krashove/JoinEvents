@@ -1,9 +1,11 @@
 var express = require('express');
+var mongoose = require('mongoose')
 var router = express.Router();
 let user = require('../models/User');
 let events = require('../models/Evento');
 let categorias = require('../models/Categoria');
 let tickets = require('../models/Ticket');
+let favoritos = require('../models/favoritos');
 
 router.post('/create', async function(req, res, next){
     if (!req.body.evento){
@@ -148,6 +150,42 @@ router.post('/listProveedor', async function(req, res, next){
         })
     } catch(error) {
         return res.status(400).json({error})
+    }
+});
+
+router.post('/obtieneFavoritos', async function(req, res, next){
+    try{
+        console.log(req.body.user.id)
+        var favoritosuser = await favoritos.findProveedor(req.body.user.id)
+        console.log(favoritosuser)
+        var eventos = await events.findByArrIdu(favoritosuser.ideventos)
+
+        return res.status(200).json({
+            eventos,
+            error: '' 
+        })
+    } catch(error) {
+        return res.status(400).json({eventos: '', error})
+    }
+});
+
+router.post('/setfavorito', async function(req, res, next){
+    try{
+        var favoritosuser = await favoritos.findOne( { iduser: req.body.user.id }).exec()
+                .then(async (data)=>{if(!data) {return await new favoritos()} return data})
+        favoritosuser.iduser = req.body.user.id
+        var idevento = req.body.evento.id
+        
+        var total = favoritosuser.ideventos.push(idevento)
+        await favoritosuser.save()
+
+        return res.status(200).json({
+            total,
+            favoritos: favoritosuser,
+            error: '' 
+        })
+    } catch(error) {
+        return res.status(400).json({favoritos: '', error})
     }
 });
 

@@ -45,6 +45,7 @@ class Register extends React.Component {
     cookies.set('token', data.usuario.token,{path: "/"})
     cookies.set('name', data.usuario.name,{path: "/"})
     cookies.set('tipoUser', data.usuario.tipoUser,{path: "/"})
+    cookies.set('id', data.usuario._id,{path: "/"})
 
     window.location.href="./" 
   };

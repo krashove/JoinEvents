@@ -168,4 +168,15 @@ router.post('/login', async function(req, res, next){
   }
 })
 
+router.post('/getInfo', async function(req, res, next){
+  try{
+    var usuario = await user.findByCredentials(req.body.token)
+
+    return res.status(200).json({usuario, 
+      error:''})
+  } catch(error){
+    return res.status(400).json({error})
+  }
+});
+
 module.exports = router;

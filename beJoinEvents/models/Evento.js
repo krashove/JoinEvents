@@ -59,6 +59,10 @@ eventoSchema.statics.findByIdu = async function(id){
     return await this.findOne( { _id: id }).exec()
 }
 
+eventoSchema.statics.findByArrIdu = async function(id){
+    return await this.find( { _id: id }).exec()
+}
+
 eventoSchema.statics.findDisponibles = async function(){
     return await this.find( { estado: 'publicado', tipoEvento: 'Normal' }).limit(9).exec()
 }

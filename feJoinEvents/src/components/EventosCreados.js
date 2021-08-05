@@ -9,7 +9,7 @@ import GridContainer from "../components/Grid/GridContainer.js";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Favorite from "@material-ui/icons/Favorite";
+//import Favorite from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -43,35 +43,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6];
+//const cards = [1, 2, 3, 4, 5, 6];
 
-export default function Album() {
+export default function Album(props) {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <main>
-      <GridContainer justify="center">
+      <GridContainer justifyContent="center">
         <div className={classes.name}>
           <h3 className={classes.title}>EVENTOS CREADOS</h3>
         </div>
       </GridContainer>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {props.creados.map((card) => (
+              <Grid item key={card._id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="./images/gallery/3.jpg"
-                    title="Image title"
-                  />
+                    image={(!card.imagen)? "./images/gallery/3.jpg" : card.imagen  }
+                    title="Image title" />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Evento
-                    </Typography>
+                    <Typography gutterBottom variant="h5" component="h2"> {card.nombre} </Typography>
                     <Typography>
-                      Detalles simples de evento...
+                      {card.descripcion}
                     </Typography>
                   </CardContent>
                   <CardActions>
