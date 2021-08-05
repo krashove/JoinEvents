@@ -64,7 +64,7 @@ router.post('/terminado', async function(req, res, next){
         return res.status(401).json({message: 'No envio parametros de autenticacion.'});
     }
     try{
-        var evento = await events.findByCredentials(req.body.evento.id)
+        var evento = await events.findByIdu(req.body.evento.id)
         if (evento.estado != 'publicado'){
             return res.status(400).json({error: 'el evento no se encuentra en estado publicado.'})
         }
@@ -74,6 +74,23 @@ router.post('/terminado', async function(req, res, next){
 
         return res.status(200).json({
             evento,
+            error: '' 
+        })
+    } catch(error) {
+        return res.status(400).json({error})
+    }
+});
+
+router.post('/getinfo', async function(req, res, next){
+    if (!req.body.evento){
+        return res.status(401).json({message: 'No envio parametros de autenticacion.'});
+    }
+    try{
+        var evento = await events.findByIdu(req.body.evento.id)
+        var proveedor = await user.findByIdu(evento.idProveedor)
+        return res.status(200).json({
+            evento,
+            proveedor,
             error: '' 
         })
     } catch(error) {

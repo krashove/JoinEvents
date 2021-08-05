@@ -1,5 +1,4 @@
 import React from 'react';
-import {Paper, Stepper, Step, StepLabel, Button, Typography} from '@material-ui/core';
 
 // components
 import FormularioEvento from '../components/FormularioEvento';
@@ -10,9 +9,6 @@ import CargarImagenEvento from '../components/CargarImagenEvento';
 import MyProvider from '../context/ProviderEvente'
 
 class StepNewEvent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render(){
         return(

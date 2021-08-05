@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 
@@ -82,7 +82,7 @@ function Navibar(props) {
                   </Button>
                 </Form>
               </Nav>
-              {tipeuser == "default" ? (
+              {tipeuser === "default" ? (
                 <Nav>
                   <IconButton
                     variant="outlined"
@@ -90,11 +90,11 @@ function Navibar(props) {
                     size="small"
                     component="span"
                   >
-                    <Link to="./login">Log-In</Link>
+                    <Link to="/login">Log-In</Link>
                     <PersonIcon />
                   </IconButton>
                   <IconButton color="secondary" size="small" component="span">
-                    <Link to="./register">Registrarse</Link>{" "}
+                    <Link to="/register">Registrarse</Link>{" "}
                     <AssignmentIndIcon />
                   </IconButton>
                 </Nav>

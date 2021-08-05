@@ -32,6 +32,9 @@ var userSchema = new mongoose.Schema({
     },
     confirmado:{
         type: Boolean
+    },
+    plataforma:{
+        type: String
     }
 })
 

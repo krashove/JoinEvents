@@ -17,7 +17,8 @@ class MyProvider extends React.Component {
                     mensaje: '' ,
                     activeStep: 0,
                     steps : ['Detalles del Evento', 'Cargar Imagen', 'Revición Final'],
-                    products : []   };
+                    products : [],
+                    imagen: ''   };
     }
     
     handleChange = (event) => {
@@ -47,7 +48,8 @@ class MyProvider extends React.Component {
                 fechaFinal: (mydate+5),
                 precio: this.state.precio,
                 cantEntradas: this.state.cantidad, 
-                tipoEvento: this.state.tipoEvento
+                tipoEvento: this.state.tipoEvento,
+                imagen: this.state.imagen
             } })
         }
 
@@ -61,7 +63,7 @@ class MyProvider extends React.Component {
 
     handleNext = () => {
         this.setState({activeStep: this.state.activeStep + 1});
-        if((this.state.activeStep + 1) == 2){
+        if((this.state.activeStep + 1) === 2){
             let arr = []
             let itm = { name: 'Titulo', desc: this.state.nombre }
             arr.push(itm)
@@ -91,11 +93,31 @@ class MyProvider extends React.Component {
     handleBack = () => {
         this.setState({activeStep: this.state.activeStep - 1});
     };
+
+    convertirBase64 = async (archivos) => {
+        let file = Array.from(archivos)[0]
+        let result_base64 = await new Promise((resolve) => {
+            let fileReader = new FileReader();
+            fileReader.onload = (e) => resolve(fileReader.result);
+            fileReader.readAsDataURL(file);
+        });
+    
+        this.setState({imagen: result_base64})
+        /*Array.from(archivos).forEach( archivo => {
+          let reader = new FileReader()
+          reader.readAsDataURL(archivo)
+          reader.onload = function(){
+            let base64 = reader.result
+            console.log(base64)
+            
+          }
+        })*/
+    }
                 
     render(){
         return(
             <ContextEvent.Provider value={{state: this.state, handleChange: this.handleChange, createEvento: this.createEvento,
-                                        handleNext: this.handleNext, handleBack: this.handleBack }}>
+                                        handleNext: this.handleNext, handleBack: this.handleBack, convertirBase64: this.convertirBase64 }}>
                 {this.props.children}
             </ContextEvent.Provider>
         )
