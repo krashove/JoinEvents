@@ -53,12 +53,11 @@ class MyProvider extends React.Component {
             } })
         }
 
-        console.log(requestOptions)
-
         let user = await fetch( url_web, requestOptions)
         let data = await user.json();
 
         this.setState({mensaje: data.evento._id});
+        this.handleNext();
     }
 
     handleNext = () => {
@@ -88,6 +87,7 @@ class MyProvider extends React.Component {
             
             this.setState({products: arr});
         }
+        window.alert(this.state.activeStep)
     };
 
     handleBack = () => {
