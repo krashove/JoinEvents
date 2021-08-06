@@ -22,7 +22,7 @@ function AppRoute() {
         <Route exact path="/pasword_reset/:id" component={ResetPass} />
         <Route exact path="/genevento" component={GenerarEvento} />
         <Route exact path="/eventdetails/:id" render={(props) => <EventDetails parametros={props.match.params} /> } />
-        <Route exact path="/eventparticipation" component={ParticiparEvento} />
+        <Route exact path="/eventparticipation/:id" render={(props) => <ParticiparEvento parametros={props.match.params} /> } />
         <Route exact path="/profile" component={Profile} />
       </Switch>
     </BrowserRouter>

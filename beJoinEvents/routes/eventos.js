@@ -114,7 +114,7 @@ router.post('/eliminar', async function(req, res, next){
 router.post('/listDisponibles', async function(req, res, next){
     try{
         var eventos = await events.findDisponibles()
-
+        
         return res.status(200).json({
             eventos,
             error: '' 

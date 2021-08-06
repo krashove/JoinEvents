@@ -71,7 +71,6 @@ class Album extends React.Component {
     let data = await user.json();
     
     window.alert('se agrego a favoritos')
-    //this.setState({email: data.usuario.email})
   }
 
   render(){

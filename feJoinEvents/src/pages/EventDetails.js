@@ -28,9 +28,10 @@ export default class EventDetails extends Component {
   async componentDidMount(){
     let url_web = process.env.REACT_APP_URL_WEBSERVICE + '/events/getinfo'
     let requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ evento: { id: this.props.parametros.id } })
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json',
+                  'token': 'acbacnaic' },
+      body: JSON.stringify({ evento: { id: this.props.parametros.id } })
     }
 
     let user = await fetch( url_web, requestOptions)
@@ -61,7 +62,7 @@ export default class EventDetails extends Component {
             <Navibar route="Detalles del Evento" iconRoute={<NotesIcon />} />
           </div>
           <div>
-              <EventoDetalles card={this.state.evento} /> 
+            <EventoDetalles card={this.state.evento} /> 
           </div>
         </React.Fragment>
         }

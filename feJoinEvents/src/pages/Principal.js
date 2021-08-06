@@ -1,8 +1,10 @@
 import React from "react";
+import Cookies from "universal-cookie";
+
 import Navibar from "../components/navibar.js";
 import EventosDestacados from "../components/EventosDestacados.js";
 import Album from "../components/album.js";
-import Cookies from "universal-cookie";
+import Preloader from "../components/preloader.js";
 
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 
@@ -10,6 +12,7 @@ class Principal extends React.Component {
   state = {
     normales: [],
     destacados: [],
+    load: false 
   };
 
   async componentDidMount() {
@@ -19,8 +22,7 @@ class Principal extends React.Component {
       tipeuser = "default";
     }
 
-    let url_web =
-      process.env.REACT_APP_URL_WEBSERVICE + "/events/listDisponibles";
+    let url_web = process.env.REACT_APP_URL_WEBSERVICE + "/events/listDisponibles";
     let requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -32,8 +34,7 @@ class Principal extends React.Component {
 
     this.setState({ normales: data.eventos });
 
-    url_web =
-      process.env.REACT_APP_URL_WEBSERVICE + "/events/listDisponiblesDestado";
+    url_web = process.env.REACT_APP_URL_WEBSERVICE + "/events/listDisponiblesDestado";
     requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -44,20 +45,27 @@ class Principal extends React.Component {
     data = await user.json();
 
     this.setState({ destacados: data.eventos });
+    this.setState({load: true})
   }
 
-  render() {
+  render() { 
     return (
       <React.Fragment>
-        <div>
-          <Navibar route="Home" iconRoute={<MeetingRoomIcon />} />
-        </div>
-        <div>
-          <Album cards={this.state.normales} />
-        </div>
-        <div>
-          <EventosDestacados cards={this.state.destacados} />
-        </div>
+        {(!this.state.load)?
+          <Preloader />
+        :
+          <React.Fragment>
+            <div>
+              <Navibar route="Home" iconRoute={<MeetingRoomIcon />} />
+            </div>
+            <div>
+              <Album cards={this.state.normales} />
+            </div>
+            <div>
+              <EventosDestacados cards={this.state.destacados} />
+            </div>
+          </React.Fragment>
+        }
       </React.Fragment>
     );
   }

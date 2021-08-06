@@ -9,6 +9,10 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 export default class EventosDestacados extends Component {
+  state = {
+    message: ''
+  }
+
   async agregarFavorito (id, e){
     e.preventDefault()
     let cookies = new Cookies();
@@ -21,9 +25,8 @@ export default class EventosDestacados extends Component {
     }
     let user = await fetch( url_web, requestOptions)
     let data = await user.json();
-    
-    window.alert('se agrego a favoritos')
-    //this.setState({email: data.usuario.email})
+    this.setState({message: data.error})
+    window.alert('se agrego evento a tus favoritos ')
   }
 
   render() {
@@ -44,7 +47,7 @@ export default class EventosDestacados extends Component {
                     <Container fluid="md">
                       <Row className="justify-content-md-center justify-content-sm-center">
                         <Col>
-                          <Button variant="outline-warning"><Link to='/eventparticipation'>Participar </Link></Button>
+                          <Button variant="outline-warning"><Link to={`/eventparticipation/${carditm._id}`}>Participar </Link></Button>
                         </Col>
                         <Col>
                           <Button onClick={this.agregarFavorito.bind(this, carditm._id )} variant="outline-danger">Favorito</Button>
