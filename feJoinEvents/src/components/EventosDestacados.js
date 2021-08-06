@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/esm/Container";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 export default class EventosDestacados extends Component {
   async agregarFavorito (id, e){
@@ -43,7 +44,7 @@ export default class EventosDestacados extends Component {
                     <Container fluid="md">
                       <Row className="justify-content-md-center justify-content-sm-center">
                         <Col>
-                          <Button variant="outline-warning">Participar</Button>
+                          <Button variant="outline-warning"><Link to='/eventparticipation'>Participar </Link></Button>
                         </Col>
                         <Col>
                           <Button onClick={this.agregarFavorito.bind(this, carditm._id )} variant="outline-danger">Favorito</Button>

@@ -19,7 +19,7 @@ router.post('/create', async function(req, res, next){
 
         var evento = new events(req.body.evento)
         evento.idProveedor = proveedor._id
-        
+        evento.estado = 'publicado'
         await evento.save()
 
         return res.status(200).json({
