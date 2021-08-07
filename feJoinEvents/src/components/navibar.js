@@ -79,10 +79,6 @@ function Navibar(props) {
                     aria-label="Buscar"
                     onChange={props.handleChange}
                   />
-                  <Button className="theme-btn btn-style-one">
-                    <span className="btn-title">Buscar</span>
-                    &nbsp;&nbsp;&nbsp;
-                  </Button>
                 </Form>
               </Nav>
               {tipeuser === "default" ? (
