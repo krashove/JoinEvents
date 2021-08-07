@@ -34,7 +34,7 @@ const cerrarSession = () => {
   cookies.remove("token", { path: "/" });
   cookies.remove("name", { path: "/" });
   cookies.remove("tipoUser", { path: "/" });
-  cookies.remove('id', {path: "/"})
+  cookies.remove("id", { path: "/" });
 
   window.location.href = "./";
 };
@@ -77,6 +77,7 @@ function Navibar(props) {
                     placeholder="Buscar Evento / Categoria"
                     className="mr-2"
                     aria-label="Buscar"
+                    onChange={props.handleChange}
                   />
                   <Button className="theme-btn btn-style-one">
                     <span className="btn-title">Buscar</span>
@@ -105,20 +106,25 @@ function Navibar(props) {
                   <Dropdown>
                     <Dropdown.Toggle
                       id="dropdown-button-dark-example1"
-                      variant="secondary" >
+                      variant="secondary"
+                    >
                       <PersonIcon className={classes.icon} />
                       {usuario} &nbsp;▾
                     </Dropdown.Toggle>
                     <Dropdown.Menu variant="dark">
                       <Dropdown.Item href={`/profile`}>Mi Perfil</Dropdown.Item>
-                      {tipeuser === "proveedor" ? 
+                      {tipeuser === "proveedor" ? (
                         <React.Fragment>
-                          <Dropdown.Item href="/genevento">Crear Evento</Dropdown.Item>
-                          <Dropdown.Item href="/profile">Mis Eventos</Dropdown.Item>
+                          <Dropdown.Item href="/genevento">
+                            Crear Evento
+                          </Dropdown.Item>
+                          <Dropdown.Item href="/profile">
+                            Mis Eventos
+                          </Dropdown.Item>
                         </React.Fragment>
-                      :
+                      ) : (
                         <Dropdown.Item href="/profile">Favoritos</Dropdown.Item>
-                      }
+                      )}
                       <Dropdown.Divider />
                       <Dropdown.Item onClick={cerrarSession}>
                         Cerrar Sesión
