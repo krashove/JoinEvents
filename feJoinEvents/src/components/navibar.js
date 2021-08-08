@@ -4,6 +4,7 @@ import Cookies from "universal-cookie";
 
 import "./styles/style.css";
 import "./styles/navibar.css";
+import logo from "./images/JoinEvents-logo-3.png";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -57,8 +58,8 @@ function Navibar(props) {
           <Navbar.Brand href="/">
             <img
               className="navibar-logo"
-              src="./images/JoinEvents-logo-3.png"
-              alt=""
+              src={logo}
+              alt="No se cargó el logo"
             />
           </Navbar.Brand>
           {props.iconRoute}
