@@ -58,11 +58,11 @@ class EventosDestacados extends Component {
                     <Container fluid="md">
                       <Row className="justify-content-md-center justify-content-sm-center">
                         <Col>
-                          <Button variant="outline-warning">
-                            <Link to={`/eventparticipation/${carditm._id}`}>
+                          <Link to={`/eventparticipation/${carditm._id}`}>
+                            <Button variant="outline-warning">
                               Participar{" "}
-                            </Link>
-                          </Button>
+                            </Button>
+                          </Link>
                         </Col>
                         <Col>
                           <Button
