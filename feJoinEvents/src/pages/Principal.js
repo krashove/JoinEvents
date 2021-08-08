@@ -12,6 +12,7 @@ class Principal extends React.Component {
   state = {
     normales: [],
     destacados: [],
+    searchBar: "",
     load: false,
   };
 
@@ -51,11 +52,10 @@ class Principal extends React.Component {
   }
 
   render() {
-    const { normales, searchBar } = this.state;
+    const { normales, searchBar, destacados } = this.state;
     const normalFilteredEvents = normales.filter((normalEvent) =>
       normalEvent.nombre.toLowerCase().includes(searchBar.toLowerCase())
     );
-    const { destacados } = this.state;
     const destacFilteredEvents = destacados.filter((destacEvent) =>
       destacEvent.nombre.toLowerCase().includes(searchBar.toLowerCase())
     );
