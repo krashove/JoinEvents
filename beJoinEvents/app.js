@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressSession = require('express-session');
 var bodyParser = require('body-parser');
+var cors = require('cors')
 
 /* CONEXXION MONGO */
 var mongoose = require('./db/db');
@@ -14,15 +15,25 @@ var usersRouter = require('./routes/users');
 var eventosRouter = require('./routes/eventos');
 
 var app = express();
-
+app.use(cors());
 // Configurar cabeceras y cors
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.header("Access-Control-Allow-Origin", "*");
+
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, authorization"
+  );
+  res.header(
+    "Access-Control-Allow-Methods",
+    "PUT, GET, POST, DELETE, OPTIONS"
+  );
   next();
-});
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
