@@ -15,6 +15,9 @@ const styles = (theme) => ({
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
+  textobuttonv: {
+    color: "white",
+  },
 });
 
 class EventosDestacados extends Component {
@@ -58,10 +61,11 @@ class EventosDestacados extends Component {
                     <Container fluid="md">
                       <Row className="justify-content-md-center justify-content-sm-center">
                         <Col>
-                          <Link to={`/eventparticipation/${carditm._id}`}>
-                            <Button variant="outline-warning">
-                              Participar{" "}
-                            </Button>
+                          <Link
+                            className={classes.textobuttonv}
+                            to={`/eventdetails/${carditm._id}`}
+                          >
+                            <Button variant="outline-warning">Detalles </Button>
                           </Link>
                         </Col>
                         <Col>
