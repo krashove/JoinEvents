@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FormularioCompra(props) {
   const classes = useStyles();
+  const [cantEntradas, setCantEntradas] = React.useState("");
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -36,22 +38,31 @@ export default function FormularioCompra(props) {
             {props.evento.detalles}
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <TextField
             required
             id="Cantidad"
             name="cantidad"
             label="Cantidad de Entradas"
             type="number"
+            onChange={(e) => setCantEntradas(e.target.value)}
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <Typography variant="subtitle1" className={classes.Precio}>
             Precio por entrada
           </Typography>
           <Typography variant="subtitle1" className={classes.Precio}>
             {props.evento.precio}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Typography variant="subtitle1" className={classes.Precio}>
+            Total
+          </Typography>
+          <Typography variant="subtitle1" className={classes.Precio}>
+            {props.evento.precio * cantEntradas}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
