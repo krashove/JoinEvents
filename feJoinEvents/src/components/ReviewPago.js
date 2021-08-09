@@ -1,17 +1,22 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Grid from "@material-ui/core/Grid";
 
 const products = [
-  { name: 'Evento 1', desc: '%desc por memb', dato: 's/. precio sin descuento' },
-  { name: 'Fecha y Hora', desc: 'Fecha ', dato: 'horario de evento' },
+  {
+    name: "Evento 1",
+    desc: "%desc por memb",
+    dato: "s/. precio sin descuento",
+  },
+  { name: "Fecha y Hora", desc: "Fecha ", dato: "horario de evento" },
 ];
-const nota = ['Al pulsar en "confirmar" acepta que ha revizado todos los campos de la compra'];
-
+const nota = [
+  'Al pulsar en "confirmar" acepta que ha revizado todos los campos de la compra',
+];
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -25,8 +30,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ReviewPago() {
+export default function ReviewPago(props) {
   const classes = useStyles();
+  const [detalleCompra, setDetalleCompra] = React.useState();
 
   return (
     <React.Fragment>
@@ -52,7 +58,7 @@ export default function ReviewPago() {
           <Typography variant="h6" gutterBottom className={classes.title}>
             Nota:
           </Typography>
-          <Typography gutterBottom>{nota.join(', ')}</Typography>
+          <Typography gutterBottom>{nota.join(", ")}</Typography>
         </Grid>
       </Grid>
     </React.Fragment>

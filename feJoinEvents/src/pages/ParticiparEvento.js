@@ -56,19 +56,6 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ["Detalles de evento", "Forma de pago", "Reviza tu orden"];
 
-function getStepContent(step, evento) {
-  switch (step) {
-    case 0:
-      return <FormularioCompra evento={evento} />;
-    case 1:
-      return <FormaDePago />;
-    case 2:
-      return <ReviewPago />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
-
 export default function ParticiparEvento(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -88,6 +75,31 @@ export default function ParticiparEvento(props) {
     },
     // load: false,
   });
+
+  const [formPago, setFormPago] = React.useState({ form: {} });
+
+  function getStepContent(step, evento) {
+    switch (step) {
+      case 0:
+        return <FormularioCompra evento={evento} />;
+      case 1:
+        return <FormaDePago onChange={handleChangePago} />;
+      case 2:
+        return <ReviewPago evento={evento} />;
+      default:
+        throw new Error("Unknown step");
+    }
+  }
+
+  const handleChangePago = (e) => {
+    setFormPago({
+      form: {
+        ...formPago.form,
+        [e.target.name]: e.target.value,
+      },
+    });
+    console.log(formPago);
+  };
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
