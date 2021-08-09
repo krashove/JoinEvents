@@ -115,7 +115,7 @@ export default function EventoDetalle(props) {
               className={classes.margin}
             >
               <Link
-                to={`/eventparticipation/${props.card._id}`}
+                to={`/eventparticipation/${props.card.id}`}
                 style={{ color: "white" }}
               >
                 Participar

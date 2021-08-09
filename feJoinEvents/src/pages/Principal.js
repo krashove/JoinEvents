@@ -67,7 +67,13 @@ class Principal extends React.Component {
         ) : (
           <React.Fragment>
             <div>
-              <Navibar route="Home" iconRoute={<MeetingRoomIcon />} />
+              <Navibar
+                route="Home"
+                iconRoute={<MeetingRoomIcon />}
+                handleChange={(e) =>
+                  this.setState({ searchBar: e.target.value })
+                }
+              />
             </div>
             <div>
               <Album cards={normalFilteredEvents} />

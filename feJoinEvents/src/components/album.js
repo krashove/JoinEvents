@@ -1,7 +1,7 @@
 import React from "react";
 
 import Button from "@material-ui/core/Button";
-import Cookies from 'universal-cookie'
+import Cookies from "universal-cookie";
 
 import FavoriteIcon from "@material-ui/icons/Favorite";
 //import IconButton from "@material-ui/core/IconButton";
@@ -15,12 +15,12 @@ import Grid from "@material-ui/core/Grid";
 
 import Typography from "@material-ui/core/Typography";
 //import { makeStyles } from "@material-ui/core/styles";
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 
-const styles = theme => ({
+const styles = (theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -50,32 +50,31 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
-  textobuttonv:{
-    color: 'white'
+  textobuttonv: {
+    color: "white",
   },
 });
 
 class Album extends React.Component {
-
-  async agregarFavorito (id, e){
-    e.preventDefault()
+  async agregarFavorito(id, e) {
+    e.preventDefault();
     let cookies = new Cookies();
     let iduser = cookies.get("id");
-    let url_web = process.env.REACT_APP_URL_WEBSERVICE + '/events/setfavorito'
+    let url_web = process.env.REACT_APP_URL_WEBSERVICE + "/events/setfavorito";
     let requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ user: {id: iduser }, evento: {id}})
-    }
-    let user = await fetch( url_web, requestOptions)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user: { id: iduser }, evento: { id } }),
+    };
+    let user = await fetch(url_web, requestOptions);
     let data = await user.json();
-    
-    window.alert('se agrego a favoritos')
+
+    window.alert("se agrego a favoritos");
   }
 
-  render(){
+  render() {
     const { classes } = this.props;
-  
+
     return (
       <React.Fragment>
         <CssBaseline />
@@ -98,18 +97,24 @@ class Album extends React.Component {
                 color="textSecondary"
                 paragraph
               >
-                Conoce un mundo nuevo de eventos, explora, participa y diviertete.
+                Conoce un mundo nuevo de eventos, explora, participa y
+                diviertete.
               </Typography>
-
             </Container>
           </div>
+          <Container maxWidth="md">
+            <h2>Ultimos Eventos</h2>
+          </Container>
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
             <Grid container spacing={4}>
               {this.props.cards.map((card) => (
                 <Grid item key={card._id} xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia className={classes.cardMedia} image="./images/gallery/2.jpg" />
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="./images/gallery/2.jpg"
+                    />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
                         {card.nombre}
@@ -117,9 +122,20 @@ class Album extends React.Component {
                       <Typography>{card.descripcion}</Typography>
                     </CardContent>
                     <CardActions>
-                      <Button onClick={this.agregarFavorito.bind(this, card._id )} color="secondary">Favorito<FavoriteIcon /></Button>
+                      <Button
+                        onClick={this.agregarFavorito.bind(this, card._id)}
+                        color="secondary"
+                      >
+                        Favorito
+                        <FavoriteIcon />
+                      </Button>
                       <Button variant="contained" size="small" color="primary">
-                        <Link className={classes.textobuttonv} to={`/eventdetails/${card._id}`} >ver más</Link> 
+                        <Link
+                          className={classes.textobuttonv}
+                          to={`/eventdetails/${card._id}`}
+                        >
+                          ver más
+                        </Link>
                       </Button>
                     </CardActions>
                   </Card>
@@ -145,7 +161,7 @@ class Album extends React.Component {
         {/* End footer */}
       </React.Fragment>
     );
-}
+  }
 }
 
 Album.propTypes = {

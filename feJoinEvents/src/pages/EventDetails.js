@@ -10,6 +10,7 @@ export default class EventDetails extends Component {
     super(props);
     this.state = {
       evento: {
+        id: "",
         img: "../images/background/11.jpg",
         fecha: "05/08",
         titulo: "Blockchain",
@@ -21,51 +22,54 @@ export default class EventDetails extends Component {
         plataforma: "Amazon Prime",
         twitter: "https://twitter.com/TEDx",
       },
-      load: false
+      load: false,
     };
   }
 
-  async componentDidMount(){
-    let url_web = process.env.REACT_APP_URL_WEBSERVICE + '/events/getinfo'
+  async componentDidMount() {
+    let url_web = process.env.REACT_APP_URL_WEBSERVICE + "/events/getinfo";
     let requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json',
-                  'token': 'acbacnaic' },
-      body: JSON.stringify({ evento: { id: this.props.parametros.id } })
-    }
+      method: "POST",
+      headers: { "Content-Type": "application/json", token: "acbacnaic" },
+      body: JSON.stringify({ evento: { id: this.props.parametros.id } }),
+    };
 
-    let user = await fetch( url_web, requestOptions)
-    let data = await user.json()
+    let user = await fetch(url_web, requestOptions);
+    let data = await user.json();
 
-    console.log(data)
+    console.log(data);
 
-    this.setState({evento: {  img: data.evento.imagen,
-                              fecha: data.evento.fechaInicio,
-                              titulo: data.evento.nombre,
-                              detalles: data.evento.descripcion,
-                              precio: data.evento.precio,
-                              origen: data.proveedor.nombre,
-                              plataforma: data.proveedor.plataforma
-                            }})
-    this.setState({load: true})
+    this.setState({
+      evento: {
+        id: data.evento._id,
+        img: data.evento.imagen,
+        fecha: data.evento.fechaInicio,
+        titulo: data.evento.nombre,
+        detalles: data.evento.descripcion,
+        precio: data.evento.precio,
+        origen: data.proveedor.nombre,
+        plataforma: data.proveedor.plataforma,
+      },
+    });
+    this.setState({ load: true });
   }
 
   render() {
     //this.componentDidMount()
     return (
       <React.Fragment>
-        {(this.state.load === false) ? 
-            <Preloader />
-        :
-        <React.Fragment>
-          <div>
-            <Navibar route="Detalles del Evento" iconRoute={<NotesIcon />} />
-          </div>
-          <div>
-            <EventoDetalles card={this.state.evento} /> 
-          </div>
-        </React.Fragment>
-        }
+        {this.state.load === false ? (
+          <Preloader />
+        ) : (
+          <React.Fragment>
+            <div>
+              <Navibar route="Detalles del Evento" iconRoute={<NotesIcon />} />
+            </div>
+            <div>
+              <EventoDetalles card={this.state.evento} />
+            </div>
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }
