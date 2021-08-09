@@ -45,7 +45,7 @@ export default function FormularioCompra(props) {
             name="cantidad"
             label="Cantidad de Entradas"
             type="number"
-            onChange={(e) => setCantEntradas(e.target.value)}
+            onChange={props.onChange}
             fullWidth
           />
         </Grid>
@@ -62,7 +62,7 @@ export default function FormularioCompra(props) {
             Total
           </Typography>
           <Typography variant="subtitle1" className={classes.Precio}>
-            {props.evento.precio * cantEntradas}
+            {props.evento.precio * props.cantEntradas}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>

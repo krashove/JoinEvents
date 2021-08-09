@@ -33,6 +33,21 @@ const useStyles = makeStyles((theme) => ({
 export default function ReviewPago(props) {
   const classes = useStyles();
   const [detalleCompra, setDetalleCompra] = React.useState();
+  const producto = [
+    {
+      id: props.evento.id,
+      titulo: props.evento.titulo,
+      desc: "%desc por memb",
+      precio: props.evento.precio,
+    },
+    {
+      id: props.evento.id,
+      titulo: "Fecha",
+      desc: props.evento.fecha,
+      precio: props.evento.hora,
+    },
+  ];
+  console.log(producto.titulo);
 
   return (
     <React.Fragment>
@@ -40,10 +55,10 @@ export default function ReviewPago(props) {
         Detalles de pedido
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.dato}</Typography>
+        {producto.map((product) => (
+          <ListItem className={classes.listItem} key={product.id}>
+            <ListItemText primary={product.titulo} secondary={product.desc} />
+            <Typography variant="body2">{product.precio}</Typography>
           </ListItem>
         ))}
         <ListItem className={classes.listItem}>

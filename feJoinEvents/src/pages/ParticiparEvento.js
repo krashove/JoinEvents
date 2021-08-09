@@ -77,11 +77,18 @@ export default function ParticiparEvento(props) {
   });
 
   const [formPago, setFormPago] = React.useState({ form: {} });
+  const [cantEntradas, setCantEntradas] = React.useState(0);
 
   function getStepContent(step, evento) {
     switch (step) {
       case 0:
-        return <FormularioCompra evento={evento} />;
+        return (
+          <FormularioCompra
+            evento={evento}
+            onChange={handleChangeCompra}
+            cantEntradas={cantEntradas}
+          />
+        );
       case 1:
         return <FormaDePago onChange={handleChangePago} />;
       case 2:
@@ -90,6 +97,10 @@ export default function ParticiparEvento(props) {
         throw new Error("Unknown step");
     }
   }
+
+  const handleChangeCompra = (e) => {
+    setCantEntradas(e.target.value);
+  };
 
   const handleChangePago = (e) => {
     setFormPago({
